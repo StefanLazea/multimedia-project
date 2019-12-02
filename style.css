@@ -1,0 +1,17 @@
+#grid {
+    position: absolute;
+}
+
+#lateral-bar {
+    float: left;
+}
+    
+#main {
+    float: right;
+}
+
+canvas {
+    width: 600;
+    height: 800;
+    background-color: lightgray;
+}
