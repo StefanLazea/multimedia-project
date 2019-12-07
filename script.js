@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', app);
-let canvas;
-let context;
+let canvas, context;
+let canvasW, canvasH;
 //tema - grafic cu linii
 function app() {
-    console.log("testam")
-
     initCanvas();
 
     let btn = document.querySelector('#btnHistogram');
@@ -17,4 +15,6 @@ function drawHistogram() {
 function initCanvas() {
     canvas = document.querySelector('canvas');
     context = canvas.getContext('2d');
+    canvasH = canvas.height;
+    canvasW = canvas.width;
 }
