@@ -6,15 +6,18 @@
 
 #lateral-bar {
     float: left;
-    width: 29%;
-    height: -webkit-fill-available;
-    border-style: solid;
-    border-width: 1px;
+    width: 20%;
+    height: 70%;
 }
     
 #main {
     float: right;
-    width: 70%;
+    width: 80%;
+}
+
+#btnColor {
+    display: block;
+    margin: 0 auto;
 }
 
 canvas {
