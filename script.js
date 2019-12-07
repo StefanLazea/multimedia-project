@@ -7,10 +7,10 @@ function app() {
 
     initCanvas();
 
-    let btn = document.querySelector('#btnColor');
-    btn.addEventListener('click', schimbaCuloare);
+    let btn = document.querySelector('#btnHistogram');
+    btn.addEventListener('click', drawHistogram);
 }
-function schimbaCuloare() {
+function drawHistogram() {
     console.log("apelat")
 }
 
