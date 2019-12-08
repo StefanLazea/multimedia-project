@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', app);
-const dataJson = { "options": { "default": "Alegeti caracteristica", "firstCharact": "investments", "secondCharact": "inflation" }, "data": [{ "year": 2000, "countries": [{ "name": "Romania", "firstCharact": 19.8, "secondCharact": 43.1 }] }, { "year": 2001, "countries": [{ "name": "Romania", "firstCharact": 22.6, "secondCharact": 43.1 }] }] };
+const dataJson = { "options": { "default": "Alegeti caracteristica", "firstCharact": "investments", "secondCharact": "inflation" }, "data": [{ "year": 2000, "countries": [{ "name": "Romania", "firstCharact": 19.8, "secondCharact": 43.1 }] }, { "year": 2001, "countries": [{ "name": "Romania", "firstCharact": 22.6, "secondCharact": 43.1 }] }, { "year": 2002, "countries": [{ "name": "Romania", "firstCharact": 22.5, "secondCharact": 22.6 }] }, { "year": 2003, "countries": [{ "name": "Romania", "firstCharact": 22.7, "secondCharact": 23.4 }] }, { "year": 2004, "countries": [{ "name": "Romania", "firstCharact": 24.3, "secondCharact": 15.5 }] }, { "year": 2005, "countries": [{ "name": "Romania", "firstCharact": 23.9, "secondCharact": 12.1 }] }, { "year": 2006, "countries": [{ "name": "Romania", "firstCharact": 27.2, "secondCharact": 10.5 }] }, { "year": 2007, "countries": [{ "name": "Romania", "firstCharact": 31.1, "secondCharact": 15.7 }] }, { "year": 2008, "countries": [{ "name": "Romania", "firstCharact": 33.2, "secondCharact": 15.9 }] }, { "year": 2009, "countries": [{ "name": "Romania", "firstCharact": 26.6, "secondCharact": 3.97 }] }, { "year": 2010, "countries": [{ "name": "Romania", "firstCharact": 27.1, "secondCharact": 3.53 }] }, { "year": 2011, "countries": [{ "name": "Romania", "firstCharact": 28, "secondCharact": 4.01 }] }, { "year": 2012, "countries": [{ "name": "Romania", "firstCharact": 26.8, "secondCharact": 4.63 }] }, { "year": 2013, "countries": [{ "name": "Romania", "firstCharact": 25.6, "secondCharact": 3.42 }] }, { "year": 2014, "countries": [{ "name": "Romania", "firstCharact": 24.7, "secondCharact": 1.69 }] }, { "year": 2015, "countries": [{ "name": "Romania", "firstCharact": 25.2, "secondCharact": 2.59 }] }, { "year": 2016, "countries": [{ "name": "Romania", "firstCharact": 24, "secondCharact": 2.05 }] }, { "year": 2017, "countries": [{ "name": "Romania", "firstCharact": 24.4, "secondCharact": 5.28 }] }] }
 let canvas, context;
 let canvasW, canvasH;
 //tema - grafic cu linii
@@ -11,13 +11,19 @@ function app() {
 }
 
 function drawHistogram() {
-    addControllersHistogram();
+    console.log("Drawing histogram...")
+    addDropwdown();
 
     let select = document.querySelector('select');
     select.addEventListener('mouseup', () => {
-        console.log(select.value)
+        console.log(select.value);
+        // drawHistogram();
+        if (select.value != 0) {
+
+        }
     })
     context.clearRect(0, 0, canvasW, canvasH);
+
     data = [2, 10, 8, 9, 1, 3, 6, 10, 2, 4, 9, 12];
 
     drawBasicCanvasBackground('white', 'black');
@@ -42,11 +48,15 @@ function drawHistogram() {
     context.stroke();
 }
 
-function addControllersHistogram() {
+function addDropwdown() {
+    let select;
     let getLateralDiv = document.getElementById('lateral-bar');
-    let chooseCharacteristic = document.createElement('select');
-    populateDropDown(chooseCharacteristic);
-    getLateralDiv.appendChild(chooseCharacteristic);
+    if (getLateralDiv.children.length < 2) {
+        select = document.createElement('select');
+        getLateralDiv.appendChild(select);
+    }
+    populateDropDown(select);
+
 }
 
 function populateDropDown(dropdown) {
