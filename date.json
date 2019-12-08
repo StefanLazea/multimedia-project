@@ -1,12 +1,9 @@
 {
-    "options": [
-        {
-            "firstCharact": "investments"
-        },
-        {
-            "secondCharact": "inflation"
-        }
-    ],
+    "options": {
+        "default": "Alegeti caracteristica",
+        "firstCharact": "investments",
+        "secondCharact": "inflation"
+    },
     "data": [
         {
             "year": 2000,

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', app);
-const dataJson = { "options": { "firstCharact": "investments", "secondCharact": "inflation" }, "data": [{ "year": 2000, "countries": [{ "name": "Romania", "firstCharact": 19.8, "secondCharact": 43.1 }] }, { "year": 2001, "countries": [{ "name": "Romania", "firstCharact": 22.6, "secondCharact": 43.1 }] }] };
+const dataJson = { "options": { "default": "Alegeti caracteristica", "firstCharact": "investments", "secondCharact": "inflation" }, "data": [{ "year": 2000, "countries": [{ "name": "Romania", "firstCharact": 19.8, "secondCharact": 43.1 }] }, { "year": 2001, "countries": [{ "name": "Romania", "firstCharact": 22.6, "secondCharact": 43.1 }] }] };
 let canvas, context;
 let canvasW, canvasH;
 //tema - grafic cu linii
@@ -11,11 +11,12 @@ function app() {
 }
 
 function drawHistogram() {
-    let getLateralDiv = document.getElementById('lateral-bar');
-    let chooseCharacteristic = document.createElement('select');
-    populateDropDown(chooseCharacteristic);
-    getLateralDiv.appendChild(chooseCharacteristic);
+    addControllersHistogram();
 
+    let select = document.querySelector('select');
+    select.addEventListener('mouseup', () => {
+        console.log(select.value)
+    })
     context.clearRect(0, 0, canvasW, canvasH);
     data = [2, 10, 8, 9, 1, 3, 6, 10, 2, 4, 9, 12];
 
@@ -41,14 +42,22 @@ function drawHistogram() {
     context.stroke();
 }
 
-function populateDropDown(dropdown) {
+function addControllersHistogram() {
+    let getLateralDiv = document.getElementById('lateral-bar');
+    let chooseCharacteristic = document.createElement('select');
+    populateDropDown(chooseCharacteristic);
+    getLateralDiv.appendChild(chooseCharacteristic);
+}
 
+function populateDropDown(dropdown) {
+    let index = 0;
     for (let option in dataJson.options) {
         var op = new Option();
-        op.value = 1
+        op.value = index++;
         op.text = dataJson.options[option];
         dropdown.add(op)
     }
+
     dropdown.style.display = "block"
     dropdown.style.margin = "10 auto"
 }
