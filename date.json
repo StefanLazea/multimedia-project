@@ -1,0 +1,32 @@
+{
+    "options": [
+        {
+            "firstCharact": "investments"
+        },
+        {
+            "secondCharact": "inflation"
+        }
+    ],
+    "data": [
+        {
+            "year": 2000,
+            "countries": [
+                {
+                    "name": "Romania",
+                    "firstCharact": 19.8,
+                    "secondCharact": 43.1
+                }
+            ]
+        },
+        {
+            "year": 2001,
+            "countries": [
+                {
+                    "name": "Romania",
+                    "firstCharact": 22.6,
+                    "secondCharact": 43.1
+                }
+            ]
+        }
+    ]
+}
