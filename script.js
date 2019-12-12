@@ -5,7 +5,6 @@ let canvasW, canvasH;
 //tema - grafic cu linii
 function app() {
     initCanvas();
-
     let btn = document.querySelector('#btnHistogram');
     btn.addEventListener('click', drawHistogram);
 }
