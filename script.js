@@ -16,9 +16,20 @@ function createInterfaceHistogram() {
 
         let select = document.querySelector('select');
         select.addEventListener('mouseup', () => {
-            console.log(select.value);
+            const firstCharactSelected = select.value;
+            console.log(firstCharactSelected);
             // createInterfaceHistogram();
-            if (select.value != 0) {
+            if (firstCharactSelected != 0) {
+                // getDataByYearAndCountry();
+                let countryData = []
+                dataJson.data.map(year => {
+                    year.countries.map(indexCountry => {
+                        if (indexCountry.name === "Romania") {
+                            countryData.push(indexCountry.firstCharact);
+                        }
+                    })
+                });
+                console.log(countryData)
                 drawHistogramContent();
             }
         })
