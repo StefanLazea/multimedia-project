@@ -6,21 +6,27 @@ document.addEventListener('DOMContentLoaded', app);
 function app() {
     initCanvas();
     let btn = document.querySelector('#btnHistogram');
-    btn.addEventListener('click', drawHistogram);
+    btn.addEventListener('click', createInterfaceHistogram);
 }
 
-function drawHistogram() {
-    console.log("Drawing histogram...")
-    addDropwdown();
+function createInterfaceHistogram() {
+    let getLateralDiv = document.getElementById('lateral-bar');
+    if (getLateralDiv.children.length == 1) {
+        addDropwdown(getLateralDiv);
 
-    let select = document.querySelector('select');
-    select.addEventListener('mouseup', () => {
-        console.log(select.value);
-        // drawHistogram();
-        if (select.value != 0) {
+        let select = document.querySelector('select');
+        select.addEventListener('mouseup', () => {
+            console.log(select.value);
+            // createInterfaceHistogram();
+            if (select.value != 0) {
+                drawHistogramContent();
+            }
+        })
 
-        }
-    })
+    }
+}
+
+function drawHistogramContent() {
     context.clearRect(0, 0, canvasW, canvasH);
 
     data = [2, 10, 8, 9, 1, 3, 6, 10, 2, 4, 9, 12];
@@ -47,9 +53,8 @@ function drawHistogram() {
     context.stroke();
 }
 
-function addDropwdown() {
+function addDropwdown(getLateralDiv) {
     let select;
-    let getLateralDiv = document.getElementById('lateral-bar');
     if (getLateralDiv.children.length < 2) {
         select = document.createElement('select');
         getLateralDiv.appendChild(select);
