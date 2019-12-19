@@ -15,17 +15,22 @@ function createInterfaceHistogram() {
     let getLateralDiv = document.getElementById('lateral-bar');
 
     if (getLateralDiv.children.length === 2) {
+
         if (getLateralDiv.children.length < 3) {
             addDropwdown(getLateralDiv, "selectCharact");
+            let select = document.querySelector('#selectCharact');
+            populateCharactDropDown(select);
+            addDropwdown(getLateralDiv, "selectCountry");
+            let selectCountry = document.querySelector('#selectCharact');
+            selectCountry.style.display = "block"
+            selectCountry.style.margin = "10 auto"
         }
-        let select = document.querySelector('select');
+
         select.addEventListener('mouseup', () => {
-            const firstCharactSelected = select.value;
-            console.log(firstCharactSelected);
-            // createInterfaceHistogram();
+            firstDropdownSelected = select.value;
+            // console.log(parseInt(firstDropdownSelected) === 1);
             // if we don't select de default dropdown
-            if (firstCharactSelected != 0) {
-                // const arr = new Set(dataJson.data.map(year => { year.countries.map(country => { return country.name }) }))
+            if (parseInt(firstDropdownSelected) != 0) {
                 const countries = getCountriesFromJson();
                 console.log(countries)
 
@@ -82,10 +87,9 @@ function addDropwdown(getLateralDiv, id) {
     select = document.createElement('select');
     select.id = id
     getLateralDiv.appendChild(select);
-    populateDropDown(select);
 }
 
-function populateDropDown(dropdown) {
+function populateCharactDropDown(dropdown) {
     let index = 0;
     for (let option in dataJson.options) {
         var op = new Option();
