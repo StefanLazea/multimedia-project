@@ -21,6 +21,12 @@ function createInterfaceHistogram() {
             // createInterfaceHistogram();
             if (firstCharactSelected != 0) {
                 // getDataByYearAndCountry();
+
+                let contries = new Set(dataJson.data.map(year => {
+                    year.countries.map(({ name }) => name)
+                }))
+
+                console.log(contries)
                 let countryData = []
                 dataJson.data.map(year => {
                     year.countries.map(indexCountry => {
