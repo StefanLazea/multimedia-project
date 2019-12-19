@@ -11,22 +11,20 @@ function app() {
 
 function createInterfaceHistogram() {
     let getLateralDiv = document.getElementById('lateral-bar');
+
     if (getLateralDiv.children.length == 1) {
         addDropwdown(getLateralDiv);
 
-        let select = document.querySelector('select');
         select.addEventListener('mouseup', () => {
             const firstCharactSelected = select.value;
             console.log(firstCharactSelected);
             // createInterfaceHistogram();
+            // if we don't select de default dropdown
             if (firstCharactSelected != 0) {
-                // getDataByYearAndCountry();
+                // const arr = new Set(dataJson.data.map(year => { year.countries.map(country => { return country.name }) }))
+                const countries = getCountriesFromJson();
+                console.log(countries)
 
-                let contries = new Set(dataJson.data.map(year => {
-                    year.countries.map(({ name }) => name)
-                }))
-
-                console.log(contries)
                 let countryData = []
                 dataJson.data.map(year => {
                     year.countries.map(indexCountry => {
@@ -91,6 +89,16 @@ function populateDropDown(dropdown) {
 
     dropdown.style.display = "block"
     dropdown.style.margin = "10 auto"
+}
+
+function getCountriesFromJson() {
+    const countries = [];
+    dataJson.data.map(year => {
+        year.countries.map(country => {
+            countries.indexOf(country.name) ? countries.push(country.name) : null
+        })
+    })
+    return countries;
 }
 
 function drawBasicCanvasBackground(fillColor, strokeStyle) {
