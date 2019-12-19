@@ -7,14 +7,18 @@ function app() {
     initCanvas();
     let btn = document.querySelector('#btnHistogram');
     btn.addEventListener('click', createInterfaceHistogram);
+    let btnClearCanvas = document.querySelector('#btnClearHistogram');
+    btnClearCanvas.addEventListener('click', clearCanvas);
 }
 
 function createInterfaceHistogram() {
     let getLateralDiv = document.getElementById('lateral-bar');
 
-    if (getLateralDiv.children.length == 1) {
-        addDropwdown(getLateralDiv);
-
+    if (getLateralDiv.children.length === 2) {
+        if (getLateralDiv.children.length < 3) {
+            addDropwdown(getLateralDiv, "selectCharact");
+        }
+        let select = document.querySelector('select');
         select.addEventListener('mouseup', () => {
             const firstCharactSelected = select.value;
             console.log(firstCharactSelected);
@@ -34,17 +38,22 @@ function createInterfaceHistogram() {
                     })
                 });
                 console.log(countryData)
-                drawHistogramContent();
+
+                drawHistogramContent(countryData);
             }
         })
-
     }
 }
 
-function drawHistogramContent() {
-    context.clearRect(0, 0, canvasW, canvasH);
+function clearCanvas() {
+    console.log("Canvas cleared")
+    context.clearRect(0, 0, canvasW, canvasW);
+    context.strokeStyle = "black";
+    context.fillStyle = "black";
+}
 
-    data = [2, 10, 8, 9, 1, 3, 6, 10, 2, 4, 9, 12];
+function drawHistogramContent(data) {
+    context.clearRect(0, 0, canvasW, canvasH);
 
     drawBasicCanvasBackground('white', 'black');
 
@@ -68,14 +77,12 @@ function drawHistogramContent() {
     context.stroke();
 }
 
-function addDropwdown(getLateralDiv) {
+function addDropwdown(getLateralDiv, id) {
     let select;
-    if (getLateralDiv.children.length < 2) {
-        select = document.createElement('select');
-        getLateralDiv.appendChild(select);
-    }
+    select = document.createElement('select');
+    select.id = id
+    getLateralDiv.appendChild(select);
     populateDropDown(select);
-
 }
 
 function populateDropDown(dropdown) {
