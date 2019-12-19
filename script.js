@@ -44,10 +44,10 @@ function initInterface() {
     }
 }
 function draw(charactSelectValue, countrySelectValue) {
-    console.log(charactSelectValue + " / " + countrySelectValue);
+    console.log(parseInt(charactSelectValue) === 1 + " / " + countrySelectValue);
     const countryName = countries[countrySelectValue];
-    if (parseInt(charactSelectValue) != 0) {
-        let countryData = []
+    let countryData = []
+    if (parseInt(charactSelectValue) === 1) {
         dataJson.data.map(year => {
             year.countries.map(indexCountry => {
                 if (indexCountry.name === countryName) {
@@ -59,6 +59,19 @@ function draw(charactSelectValue, countrySelectValue) {
 
         drawHistogramContent(countryData);
     }
+    if (parseInt(charactSelectValue) === 2) {
+        dataJson.data.map(year => {
+            year.countries.map(indexCountry => {
+                if (indexCountry.name === countryName) {
+                    countryData.push(indexCountry.secondCharact);
+                }
+            })
+        });
+        console.log(countryData)
+
+        drawHistogramContent(countryData);
+    }
+
 }
 
 function populateCountriesDropDown(selectCountry) {
