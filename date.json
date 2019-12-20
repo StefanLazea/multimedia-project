@@ -40,7 +40,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 20,
                     "secondCharact": 8.9,
                     "thirdCharact": 6.8
                 },
@@ -63,7 +63,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 140,
                     "secondCharact": 12.7,
                     "thirdCharact": 8
                 },
@@ -86,7 +86,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 80,
                     "secondCharact": 12.7,
                     "thirdCharact": 8.9
                 },
@@ -109,7 +109,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 78.7,
                     "secondCharact": 12.2,
                     "thirdCharact": 5.9
                 },
@@ -132,7 +132,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 27.9,
                     "secondCharact": 13,
                     "thirdCharact": 7.8
                 },
@@ -155,7 +155,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 78.12,
                     "secondCharact": 8.1,
                     "thirdCharact": 7
                 },
@@ -178,7 +178,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 19.9,
                     "secondCharact": 8.43,
                     "thirdCharact": 8.12
                 },
@@ -201,7 +201,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 112.5,
                     "secondCharact": 28.1,
                     "thirdCharact": 7.8
                 },
@@ -224,7 +224,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 70.8,
                     "secondCharact": 29.1,
                     "thirdCharact": 10.3
                 },
@@ -247,7 +247,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 67.5,
                     "secondCharact": 21.5,
                     "thirdCharact": 3.4
                 },
@@ -270,7 +270,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 12.9,
                     "secondCharact": 21.3,
                     "thirdCharact": 4.5
                 },
@@ -293,7 +293,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 22.4,
                     "secondCharact": 19.7,
                     "thirdCharact": 5.1
                 },
@@ -316,7 +316,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 40.3,
                     "secondCharact": 19.5,
                     "thirdCharact": 4.45
                 },
@@ -339,7 +339,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 45.9,
                     "secondCharact": 22,
                     "thirdCharact": 4.89
                 },
@@ -362,7 +362,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 67.8,
                     "secondCharact": 20,
                     "thirdCharact": 5
                 },
@@ -385,7 +385,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 64.5,
                     "secondCharact": 13.6,
                     "thirdCharact": 7
                 },
@@ -408,7 +408,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 78.2,
                     "secondCharact": 8.07,
                     "thirdCharact": 5.23
                 },
@@ -431,7 +431,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 89.21,
                     "secondCharact": 9.86,
                     "thirdCharact": 6.12
                 },
@@ -454,7 +454,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 50.2,
                     "secondCharact": 11.6,
                     "thirdCharact": 7.02
                 },
@@ -477,7 +477,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 45.8,
                     "secondCharact": 8.36,
                     "thirdCharact": 7.1
                 },
@@ -500,7 +500,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 89.2,
                     "secondCharact": 5.54,
                     "thirdCharact": 11.1
                 },
@@ -523,7 +523,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 123.8,
                     "secondCharact": 4.99,
                     "thirdCharact": 10.3
                 },
@@ -546,7 +546,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 78.8,
                     "secondCharact": 2.43,
                     "thirdCharact": 12.1
                 },
@@ -569,7 +569,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 70,
                     "secondCharact": 3.54,
                     "thirdCharact": 13.1
                 },
@@ -592,7 +592,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 76,
                     "secondCharact": 5.41,
                     "thirdCharact": 13.8
                 },
@@ -615,7 +615,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 89.2,
                     "secondCharact": 5,
                     "thirdCharact": 6.5
                 },
@@ -638,7 +638,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 58.75,
                     "secondCharact": 4.04,
                     "thirdCharact": 15.8
                 },
@@ -661,7 +661,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 89.1,
                     "secondCharact": 2.33,
                     "thirdCharact": 15.3
                 },
@@ -684,7 +684,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 67.8,
                     "secondCharact": 2.27,
                     "thirdCharact": 15.3
                 },
@@ -707,7 +707,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 41.12,
                     "secondCharact": 3.38,
                     "thirdCharact": 17.7
                 },
@@ -730,7 +730,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 56.89,
                     "secondCharact": 2.94,
                     "thirdCharact": 18.4
                 },
@@ -753,7 +753,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 77.89,
                     "secondCharact": 3.38,
                     "thirdCharact": 18.3
                 },
@@ -776,7 +776,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 40,
                     "secondCharact": 1.88,
                     "thirdCharact": 18.4
                 },
@@ -799,7 +799,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 65,
                     "secondCharact": 0.959,
                     "thirdCharact": 18.4
                 },
@@ -822,7 +822,7 @@
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 109,
                     "secondCharact": 3.67,
                     "thirdCharact": 17.8
                 },
