@@ -19,9 +19,10 @@ function app() {
     
 
     let paragraf = document.querySelector('#graficParagraf');
-    let select = document.createElement('select');
-    select.id = "selectYear";
-    paragraf.append(select);
+    let selectYears = document.createElement('select');
+    selectYears.id = "selectYear";
+    paragraf.append(selectYears);
+    populateDropDown(selectYears, getYearsFromJson());
     
 }
 
@@ -31,8 +32,8 @@ function initHistogramInterface() {
     //in case we click the button histogram, this will put only once the needed components
     if (getLateralDiv.children.length === 3) {
         if (getLateralDiv.children.length < 4) {
-            addDropwdown( "selectCharact");
-            addDropwdown("selectCountry");
+            getLateralDiv.appendChild(addDropwdown( "selectCharact"));
+            getLateralDiv.appendChild(addDropwdown("selectCountry"));
         }
 
         //get countries
@@ -129,8 +130,8 @@ function drawHistogramContent(data) {
 function addDropwdown( id) {
     let select;
     select = document.createElement('select');
-    select.id = id
-    getLateralDiv.appendChild(select);
+    select.id = id;
+    return select;
 }
 
 // method that populates the dropdown's values with given data
