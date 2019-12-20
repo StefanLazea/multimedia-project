@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', app);
 
 function app() {
     getLateralDiv = document.getElementById('lateral-bar');
-
     initCanvas();
 
     let btnDrawHistogram = document.querySelector('#btnHistogram');
@@ -20,8 +19,13 @@ function app() {
 
     let paragraf = document.querySelector('#graficParagraf');
     paragraf.append(addDropwdown('selectYears'));
+    let selectYears = document.querySelector('#selectYears');
     populateDropDown(selectYears, getYearsFromJson());
-    
+
+    selectYears.addEventListener('mouseup',()=>{
+        const selectedYear = selectYears.options[selectYears.value].text;
+        console.log(getDataByYear(parseInt(selectedYear)));
+    });
 }
 
 //method for init components in the user interface
@@ -172,6 +176,17 @@ function getYearsFromJson() {
         years.push(data.year);
     })
     return years;
+}
+
+function getDataByYear(year){
+    console.log("Data from " + year)
+    const dataByYear = [];
+    dataJson.data.map(data=>{
+        if(data.year===year){
+            dataByYear.push(data.countries);
+        }
+    });
+    return dataByYear;
 }
 
 // draws the canvas background
