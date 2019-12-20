@@ -11,7 +11,6 @@ function app() {
 
     initCanvas();
 
-    getYearsFromJson();
     let btnDrawHistogram = document.querySelector('#btnHistogram');
     btnDrawHistogram.addEventListener('click', initHistogramInterface);
 
@@ -23,7 +22,7 @@ function app() {
     let select = document.createElement('select');
     select.id = "selectYear";
     paragraf.append(select);
-
+    
 }
 
 function initHistogramInterface() {
@@ -35,10 +34,10 @@ function initHistogramInterface() {
         countries = getCountriesFromJson();
 
         let selectCharact = document.querySelector('#selectCharact');
-        populateCharactDropDown(selectCharact);
+        populateDropDown(selectCharact, dataJson.options);
 
         let selectCountry = document.querySelector("#selectCountry");
-        populateCountriesDropDown(selectCountry);
+        populateDropDown(selectCountry, countries);
 
         //check for changes in the way canvas is designed
         selectCharact.addEventListener('mouseup', () => {
@@ -86,17 +85,7 @@ function draw(charactSelectValue, countrySelectValue) {
 
 }
 
-function populateCountriesDropDown(selectCountry) {
-    let index = 0;
-    for (let country in countries) {
-        var op = new Option();
-        op.value = index++;
-        op.text = countries[country];
-        selectCountry.add(op);
-    }
-    selectCountry.style.display = "block";
-    selectCountry.style.margin = "10 auto";
-}
+
 
 function clearCanvas() {
     console.log("Canvas cleared")
@@ -118,12 +107,12 @@ function drawHistogramContent(data) {
     context.beginPath();
 
     const number = data.length;
-    const w = canvasW / number;
-    const f = canvasH / Math.max(...data);
+    const weightMedia = canvasW / number;
+    const heightUnit = canvasH / Math.max(...data);
 
-    for (let i = 0; i < number; i++) {
-        let hi = data[i] * f;
-        context.rect(w * i, canvasH - hi, w, hi);
+    for (let step = 0; step < number; step++) {
+        let heightPerData = data[step] * heightUnit;
+        context.rect(weightMedia * step, canvasH - heightPerData, weightMedia, heightPerData);
     }
     context.fill();
     context.lineWidth = 1;
@@ -137,12 +126,12 @@ function addDropwdown( id) {
     getLateralDiv.appendChild(select);
 }
 
-function populateCharactDropDown(dropdown) {
+function populateDropDown(dropdown, data) {
     let index = 0;
-    for (let option in dataJson.options) {
+    for (let option in data) {
         var op = new Option();
         op.value = index++;
-        op.text = dataJson.options[option];
+        op.text = data[option];
         dropdown.add(op)
     }
 
