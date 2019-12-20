@@ -19,9 +19,7 @@ function app() {
     
 
     let paragraf = document.querySelector('#graficParagraf');
-    let selectYears = document.createElement('select');
-    selectYears.id = "selectYear";
-    paragraf.append(selectYears);
+    paragraf.append(addDropwdown('selectYears'));
     populateDropDown(selectYears, getYearsFromJson());
     
 }
@@ -84,10 +82,20 @@ function draw(charactSelectValue, countrySelectValue) {
                 }
             })
         });
-        console.log(countryData)
-
         drawHistogramContent(countryData);
     }
+
+    if (parseInt(charactSelectValue) === 3) {
+        dataJson.data.map(year => {
+            year.countries.map(indexCountry => {
+                if (indexCountry.name === countryName) {
+                    countryData.push(indexCountry.thirdCharact);
+                }
+            })
+        });
+        drawHistogramContent(countryData);
+    }
+
 
 }
 
@@ -128,8 +136,7 @@ function drawHistogramContent(data) {
 
 // method that adds a dropdown to the lateral div
 function addDropwdown( id) {
-    let select;
-    select = document.createElement('select');
+    let select = document.createElement('select');
     select.id = id;
     return select;
 }
