@@ -25,14 +25,20 @@ function app() {
     
 }
 
+//method for init components in the user interface
 function initHistogramInterface() {
+    //check if there are already 3 components; 
+    //in case we click the button histogram, this will put only once the needed components
     if (getLateralDiv.children.length === 3) {
         if (getLateralDiv.children.length < 4) {
             addDropwdown( "selectCharact");
             addDropwdown("selectCountry");
         }
+
+        //get countries
         countries = getCountriesFromJson();
 
+        //get select and populate them with the data from json
         let selectCharact = document.querySelector('#selectCharact');
         populateDropDown(selectCharact, dataJson.options);
 
@@ -42,7 +48,6 @@ function initHistogramInterface() {
         //check for changes in the way canvas is designed
         selectCharact.addEventListener('mouseup', () => {
             firstDropdownSelected = selectCharact.value;
-
             //error handler pentru cand se alege doar o data
             // console.log(parseInt(firstDropdownSelected) === 1);
             // if we don't select de default dropdown
@@ -50,11 +55,11 @@ function initHistogramInterface() {
                 secondDropDown = selectCountry.value;
                 draw(firstDropdownSelected, secondDropDown);
             });
-
         })
-
     }
 }
+
+// method draws the histogram given the selected values
 function draw(charactSelectValue, countrySelectValue) {
     console.log(parseInt(charactSelectValue) === 1 + " / " + countrySelectValue);
     const countryName = countries[countrySelectValue];
@@ -85,8 +90,8 @@ function draw(charactSelectValue, countrySelectValue) {
 
 }
 
-
-
+// clears canvas
+// todo: remove selects and buttons in the interface
 function clearCanvas() {
     console.log("Canvas cleared")
     context.clearRect(0, 0, canvasW, canvasW);
@@ -94,6 +99,7 @@ function clearCanvas() {
     context.fillStyle = "black";
 }
 
+// method that draws the histogram; initial phase without data
 function drawHistogramContent(data) {
     context.clearRect(0, 0, canvasW, canvasH);
 
@@ -119,6 +125,7 @@ function drawHistogramContent(data) {
     context.stroke();
 }
 
+// method that adds a dropdown to the lateral div
 function addDropwdown( id) {
     let select;
     select = document.createElement('select');
@@ -126,6 +133,7 @@ function addDropwdown( id) {
     getLateralDiv.appendChild(select);
 }
 
+// method that populates the dropdown's values with given data
 function populateDropDown(dropdown, data) {
     let index = 0;
     for (let option in data) {
@@ -158,12 +166,14 @@ function getYearsFromJson() {
     return years;
 }
 
+// draws the canvas background
 function drawBasicCanvasBackground(fillColor, strokeStyle) {
     context.fillStyle = fillColor;
     context.strokeStyle = strokeStyle;
     context.lineWidth = 0;
 }
 
+// get the data for canvas
 function initCanvas() {
     canvas = document.querySelector('canvas');
     context = canvas.getContext('2d');
