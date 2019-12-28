@@ -25,11 +25,14 @@ function app() {
     selectYears.addEventListener('mouseup',()=>{
         const selectedYear = selectYears.options[selectYears.value].text;
         console.log(getDataByYear(parseInt(selectedYear)));
+        drawTable();
     });
 }
 
 //method for init components in the user interface
 function initHistogramInterface() {
+    //show canvas 
+    canvas.style.display = "block";
     //check if there are already 3 components; 
     //in case we click the button histogram, this will put only once the needed components
     if (getLateralDiv.children.length === 3) {
@@ -60,6 +63,13 @@ function initHistogramInterface() {
             });
         })
     }
+}
+
+
+function drawTable(){
+    console.log('let\'s play');
+    // hide canvas
+    canvas.style.display = "none";
 }
 
 // method draws the histogram given the selected values

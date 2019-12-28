@@ -34,6 +34,7 @@
 }
 
 canvas {
+    display: none;
     width: 1200;
     height: 800;
     background-color: lightgray;
