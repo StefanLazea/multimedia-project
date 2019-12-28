@@ -99,8 +99,6 @@ function draw(charactSelectValue, countrySelectValue) {
         });
         drawHistogramContent(countryData);
     }
-
-
 }
 
 // clears canvas
@@ -126,13 +124,14 @@ function drawHistogramContent(data) {
     context.beginPath();
 
     const number = data.length;
-    const weightMedia = canvasW / number;
-    const heightUnit = canvasH / Math.max(...data);
+    const widthMedia = (canvasW-100) / number;
+    const heightUnit = (canvasH-100) / Math.max(...data);
 
     for (let step = 0; step < number; step++) {
         let heightPerData = data[step] * heightUnit;
-        context.rect(weightMedia * step, canvasH - heightPerData, weightMedia, heightPerData);
+        context.rect(widthMedia * step, (canvasH-100) - heightPerData, widthMedia, heightPerData);
     }
+
     context.fill();
     context.lineWidth = 1;
     context.stroke();
