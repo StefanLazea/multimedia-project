@@ -27,9 +27,8 @@ function app() {
     populateDropDown(selectYears, getYearsFromJson());
 
     selectYears.addEventListener('mouseup',()=>{
-        const selectedYear = selectYears.options[selectYears.value].text;
-        console.log(getDataByYear(parseInt(selectedYear)));
-        createTable();
+        console.log("Collecting data for the table...");
+        createTable(selectYears);
     });
 }
 
@@ -73,11 +72,27 @@ function initHistogramInterface() {
 }
 
 
-function createTable(){
+function createTable(selectYears){
     // hide canvas
     canvas.style.display = "none";
+    // display as block the table
     table.style.display = "block"
 
+    //get selected year
+    const selectedYear = selectYears.options[selectYears.value].text;
+    const data = getDataByYear(parseInt(selectedYear));
+    const caption = document.querySelector("caption");
+    caption.innerText = `Lista date din anul ${selectedYear}`;;
+
+    const tableRow = table.tHead.children[0];
+      
+
+    data.forEach((item)=>{
+        console.log(item.name)
+        const th = document.createElement('th');
+        th.innerText = item.name;
+        tableRow.appendChild(th);
+    })
 }
 
 // method draws the histogram given the selected values
@@ -196,10 +211,10 @@ function getYearsFromJson() {
 
 function getDataByYear(year){
     console.log("Data from " + year)
-    const dataByYear = [];
+    let dataByYear;
     dataJson.data.map(data=>{
-        if(data.year===year){
-            dataByYear.push(data.countries);
+        if(data.year===year){  
+            dataByYear = data.countries;
         }
     });
     return dataByYear;
