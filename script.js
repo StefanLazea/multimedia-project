@@ -103,6 +103,7 @@ function createTable(){
         }
     }
     // const tableRow = table.tHead.children[0];
+    
     const firstCharactRow = document.createElement("tr");
     const secondCharactRow = document.createElement("tr");
     const thirdCharactRow = document.createElement("tr");
