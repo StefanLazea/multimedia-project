@@ -93,11 +93,8 @@ function createTable(){
     const row = document.createElement('tr');
     thead.appendChild(row);
 
-    // creates the column for specifing the charact
-    const th = document.createElement('th');
-    th.innerText = "Caracteristica";
-    row.appendChild(th);
-    
+    initCustomHeader(row, "Caracteristica");
+       
     const tbody = document.querySelector('tbody');
 
     // if the year is changed; this checks when the number of 
@@ -114,13 +111,10 @@ function createTable(){
     
     initRows(tbody);
     
-    
-
     yearsData.forEach((item) => {
-        // complete with countries name in header of the table
-        const th = document.createElement('th');
-        th.innerText = item.name;
-        row.appendChild(th);
+        
+        // Add countries name in the thead row of the table
+        initCustomHeader(row, item.name);
 
         // add values in the cell for the right parameters
         Object.keys(item).forEach((key) => {
@@ -164,6 +158,18 @@ function addCellOnRow(row, item){
     const cell = document.createElement("td");
     cell.innerText = item;
     row.append(cell);
+}
+
+/**
+ * Adds a table header using a given text
+ * 
+ * @param {*} row - current row
+ * @param {*} headerName - specifies the value to be inserted as a table header
+ */
+function initCustomHeader(row, headerName){
+    const th = document.createElement('th');
+    th.innerText = headerName;
+    row.appendChild(th);
 }
 
 // method draws the histogram given the selected values
