@@ -33,6 +33,15 @@
     margin-left: -60px;
 }
 
+.hide {
+    display: none;
+}
+
+.center-table{
+    position: absolute;
+    left: 50%;
+}
+
 canvas {
     display: none;
     width: 1200;

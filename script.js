@@ -3,11 +3,14 @@ let canvas, context;
 let getLateralDiv;
 let countries;
 let canvasW, canvasH;
+let table;
 
 document.addEventListener('DOMContentLoaded', app);
 
 function app() {
     getLateralDiv = document.getElementById('lateral-bar');
+    table = document.querySelector("table");
+
     initCanvas();
 
     let btnDrawHistogram = document.querySelector('#btnHistogram');
@@ -25,7 +28,7 @@ function app() {
     selectYears.addEventListener('mouseup',()=>{
         const selectedYear = selectYears.options[selectYears.value].text;
         console.log(getDataByYear(parseInt(selectedYear)));
-        drawTable();
+        createTable();
     });
 }
 
@@ -33,6 +36,7 @@ function app() {
 function initHistogramInterface() {
     //show canvas 
     canvas.style.display = "block";
+    table.style.display = "none";
     //check if there are already 3 components; 
     //in case we click the button histogram, this will put only once the needed components
     if (getLateralDiv.children.length === 3) {
@@ -66,15 +70,15 @@ function initHistogramInterface() {
 }
 
 
-function drawTable(){
-    console.log('let\'s play');
+function createTable(){
     // hide canvas
     canvas.style.display = "none";
+    table.style.display = "block"
+
 }
 
 // method draws the histogram given the selected values
 function draw(charactSelectValue, countrySelectValue) {
-    console.log(parseInt(charactSelectValue) === 1 + " / " + countrySelectValue);
     const countryName = countries[countrySelectValue];
     let countryData = []
     if (parseInt(charactSelectValue) === 1) {
