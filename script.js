@@ -4,6 +4,7 @@ let getLateralDiv;
 let countries;
 let canvasW, canvasH;
 let table;
+let btnClearCanvas;
 
 document.addEventListener('DOMContentLoaded', app);
 
@@ -16,7 +17,7 @@ function app() {
     let btnDrawHistogram = document.querySelector('#btnHistogram');
     btnDrawHistogram.addEventListener('click', initHistogramInterface);
 
-    let btnClearCanvas = document.querySelector('#btnClearHistogram');
+    btnClearCanvas = document.querySelector('#btnClearHistogram');
     btnClearCanvas.addEventListener('click', clearCanvas);
     
 
@@ -37,6 +38,8 @@ function initHistogramInterface() {
     //show canvas 
     canvas.style.display = "block";
     table.style.display = "none";
+    btnClearCanvas.style.display = "block";
+
     //check if there are already 3 components; 
     //in case we click the button histogram, this will put only once the needed components
     if (getLateralDiv.children.length === 3) {
