@@ -78,26 +78,32 @@ function createTable(){
 
     //get selected year
     const selectedYear = selectYears.options[this.value].text;
-    const data = getDataByYear(parseInt(selectedYear));
+    // get the array of objects containing the informations from the selected year
+    const yearsData = getDataByYear(parseInt(selectedYear));
+
     const caption = document.querySelector("caption");
-    caption.innerText = `Lista date din anul ${selectedYear}`;;
+    caption.innerText = `Lista date din anul ${selectedYear}`;
 
     const thead = document.querySelector("thead");
 
     // deletes the first row, to make sure we don't do duplicated values
     thead.deleteRow(0);
+
+    //Adds the first row for the header part of the table
     const row = document.createElement('tr');
     thead.appendChild(row);
 
+    // creates the column for specifing the charact
     const th = document.createElement('th');
     th.innerText = "Caracteristica";
     row.appendChild(th);
     
     const tbody = document.querySelector('tbody');
 
-    // if the year is changed; this if verifies check when the number of 
+    // if the year is changed; this checks when the number of 
     // rows in tbody is the number of chracteristics 
     // if this value is true, means that the data was loaded before in the table
+    // so, we have duplicate data; 
     let numberOfCharact = Object.keys(dataJson.options).length - 1;
     if(tbody.rows.length === numberOfCharact){
         while(numberOfCharact !== 0){
@@ -106,33 +112,54 @@ function createTable(){
         }
     }
     
-    Object.keys(dataJson.options).forEach((key)=>{
-        if(key!=="default"){
-           console.log(key, dataJson.options[key])
-            const tableRow = document.createElement("tr");
-            tableRow.id = key + "Row";
-            tbody.append(tableRow);
-        }
-    })
+    initRows(tbody);
     
-    console.log(firstCharactRow);
-    addCellOnRow(firstCharactRow, dataJson.options["firstCharact"]);
-    addCellOnRow(secondCharactRow, dataJson.options["secondCharact"]);
-    addCellOnRow(thirdCharactRow, dataJson.options["thirdCharact"]);
+    
 
-    data.forEach((item) => {
-        // console.log(item)
+    yearsData.forEach((item) => {
+        // complete with countries name in header of the table
         const th = document.createElement('th');
         th.innerText = item.name;
         row.appendChild(th);
 
-        // add cells for the specified parameter row, with value from item
-        addCellOnRow(firstCharactRow, item.firstCharact);
-        addCellOnRow(secondCharactRow, item.secondCharact);
-        addCellOnRow(thirdCharactRow, item.thirdCharact);
+        // add values in the cell for the right parameters
+        Object.keys(item).forEach((key) => {
+            if(key !== "name"){
+                // the id is formed from key pluw Row
+                const id = key + "Row";
+                const row = document.getElementById(id);
+                //adds the cell value to the current row and adds the value from the object
+                addCellOnRow(row, item[key]);
+            }
+        })
     });
 }
 
+/**
+ * creates rows
+ * add values for rows cell according to the json options
+ * those rows are appended to the tbody
+ * @param {*} tbody 
+ */
+function initRows(tbody){
+    Object.keys(dataJson.options).forEach((key)=>{
+        if(key!=="default"){
+            const tableRow = document.createElement("tr");
+            tableRow.id = key + "Row";
+
+            tbody.append(tableRow);
+            // adds the first cells for the characteristics column
+            const row = document.getElementById(tableRow.id);
+            addCellOnRow(row, dataJson.options[key]);
+        }
+    })
+}
+
+/**
+ * Add values to row's cell.
+ * @param {*} row - the current row 
+ * @param {*} item - the item that should be added as cell value
+ */
 function addCellOnRow(row, item){
     const cell = document.createElement("td");
     cell.innerText = item;
