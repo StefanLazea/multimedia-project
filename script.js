@@ -27,11 +27,6 @@ function app() {
     selectYears = document.querySelector('#selectYears');
     populateDropDown(selectYears, getYearsFromJson());
 
-    // selectYears.addEventListener('mouseup',()=>{
-    //     console.log("Collecting data for the table...");
-    //     createTable(selectYears);
-    // });
-
     selectYears.addEventListener('change', createTable, false);
 }
 
@@ -94,7 +89,19 @@ function createTable(){
     const row = document.createElement('tr');
     thead.appendChild(row);
 
+    
     const tbody = document.querySelector('tbody');
+
+    // if the year is changed; this if verifies check when the number of 
+    // rows in tbody is the number of chracteristics 
+    // if this value is true, means that the data was loaded before in the table
+    let numberOfCharact = Object.keys(dataJson.options).length - 1;
+    if(tbody.rows.length === numberOfCharact){
+        while(numberOfCharact !== 0){
+            tbody.deleteRow(0);
+            numberOfCharact--;
+        }
+    }
     // const tableRow = table.tHead.children[0];
     const firstCharactRow = document.createElement("tr");
     const secondCharactRow = document.createElement("tr");
@@ -118,7 +125,7 @@ function createTable(){
         th.innerText = item.name;
         row.appendChild(th);
 
-        console.log(dataJson.options["firstCharact"])
+        // add cells for the specified parameter row, with value from item
         addCellOnRow(firstCharactRow, item.firstCharact);
         addCellOnRow(secondCharactRow, item.secondCharact);
         addCellOnRow(thirdCharactRow, item.thirdCharact);
