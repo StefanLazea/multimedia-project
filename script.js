@@ -84,14 +84,19 @@ function createTable(selectYears){
     const caption = document.querySelector("caption");
     caption.innerText = `Lista date din anul ${selectedYear}`;;
 
-    const tableRow = table.tHead.children[0];
-      
+    const thead = document.querySelector("thead");
 
+    // deletes the first row, to make sure we don't do duplicated values
+    thead.deleteRow(0);
+    const row = document.createElement('tr');
+    thead.appendChild(row);
+    
+    // const tableRow = table.tHead.children[0];
     data.forEach((item)=>{
         console.log(item.name)
         const th = document.createElement('th');
         th.innerText = item.name;
-        tableRow.appendChild(th);
+        row.appendChild(th);
     })
 }
 
