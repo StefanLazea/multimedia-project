@@ -90,14 +90,26 @@ function createTable(selectYears){
     thead.deleteRow(0);
     const row = document.createElement('tr');
     thead.appendChild(row);
-    
+
+    const tbody = document.querySelector('tbody');
     // const tableRow = table.tHead.children[0];
-    data.forEach((item)=>{
-        console.log(item.name)
+    data.forEach((item) => {
+        console.log(item)
         const th = document.createElement('th');
         th.innerText = item.name;
         row.appendChild(th);
-    })
+
+        let bodyRow = document.createElement("tr");
+        tbody.append(bodyRow);
+        addRow(bodyRow, item);
+    });
+}
+
+function addRow(row, item){
+    const cell = document.createElement("td");
+    console.log(item.firstCharact)
+    cell.innerText = item.firstCharact;
+    row.append(cell);
 }
 
 // method draws the histogram given the selected values
