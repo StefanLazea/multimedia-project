@@ -89,6 +89,9 @@ function createTable(){
     const row = document.createElement('tr');
     thead.appendChild(row);
 
+    const th = document.createElement('th');
+    th.innerText = "Caracteristica";
+    row.appendChild(th);
     
     const tbody = document.querySelector('tbody');
 
@@ -104,6 +107,16 @@ function createTable(){
     }
     // const tableRow = table.tHead.children[0];
     
+    // Object.keys(dataJson.options).forEach((key)=>{
+    //     if(key!=="default"){
+           
+    //     console.log(key, dataJson.options[key])
+    //     const tableRow = document.createElement("tr");
+    //     tableRow.id = key + "Row";
+    //     tbody.append(tableRow);
+    //     }
+    // })
+
     const firstCharactRow = document.createElement("tr");
     const secondCharactRow = document.createElement("tr");
     const thirdCharactRow = document.createElement("tr");
@@ -112,9 +125,7 @@ function createTable(){
     tbody.append(secondCharactRow);
     tbody.append(thirdCharactRow);
 
-    const th = document.createElement('th');
-    th.innerText = "Caracteristica";
-    row.appendChild(th);
+    
 
     addCellOnRow(firstCharactRow, dataJson.options["firstCharact"]);
     addCellOnRow(secondCharactRow, dataJson.options["secondCharact"]);
