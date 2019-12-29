@@ -43,7 +43,7 @@ function initHistogramInterface() {
     //in case we click the button histogram, this will put only once the needed components
     if (getLateralDiv.children.length === 3) {
         if (getLateralDiv.children.length < 4) {
-            getLateralDiv.appendChild(addDropwdown( "selectCharact"));
+            getLateralDiv.appendChild(addDropwdown("selectCharact"));
             getLateralDiv.appendChild(addDropwdown("selectCountry"));
         }
 
@@ -93,22 +93,39 @@ function createTable(selectYears){
 
     const tbody = document.querySelector('tbody');
     // const tableRow = table.tHead.children[0];
+    const firstCharactRow = document.createElement("tr");
+    const secondCharactRow = document.createElement("tr");
+    const thirdCharactRow = document.createElement("tr");
+
+    tbody.append(firstCharactRow);
+    tbody.append(secondCharactRow);
+    tbody.append(thirdCharactRow);
+
+    const th = document.createElement('th');
+    th.innerText = "Caracteristica";
+    row.appendChild(th);
+
+    addCellOnRow(firstCharactRow, dataJson.options["firstCharact"]);
+    addCellOnRow(secondCharactRow, dataJson.options["secondCharact"]);
+    addCellOnRow(thirdCharactRow, dataJson.options["thirdCharact"]);
+    
     data.forEach((item) => {
-        console.log(item)
+        // console.log(item)
         const th = document.createElement('th');
         th.innerText = item.name;
         row.appendChild(th);
 
-        let bodyRow = document.createElement("tr");
-        tbody.append(bodyRow);
-        addRow(bodyRow, item);
+        console.log(dataJson.options["firstCharact"])
+        addCellOnRow(firstCharactRow, item.firstCharact);
+        addCellOnRow(secondCharactRow, item.secondCharact);
+        addCellOnRow(thirdCharactRow, item.thirdCharact);
     });
 }
 
-function addRow(row, item){
+function addCellOnRow(row, item){
     const cell = document.createElement("td");
-    console.log(item.firstCharact)
-    cell.innerText = item.firstCharact;
+    // console.log(item)
+    cell.innerText = item;
     row.append(cell);
 }
 

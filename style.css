@@ -37,9 +37,24 @@
     display: none;
 }
 
-.center-table{
+.center-table {
     position: absolute;
     left: 50%;
+}
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 5%;
+}
+
+th {
+    background-color: #17678a;
+    color: white;
+}
+
+th, td {
+    padding: 8px;
 }
 
 canvas {
