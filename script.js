@@ -5,6 +5,7 @@ let countries;
 let canvasW, canvasH;
 let table;
 let btnClearCanvas;
+let selectYears;
 
 document.addEventListener('DOMContentLoaded', app);
 
@@ -23,13 +24,15 @@ function app() {
 
     let paragraf = document.querySelector('#graficParagraf');
     paragraf.append(addDropwdown('selectYears'));
-    let selectYears = document.querySelector('#selectYears');
+    selectYears = document.querySelector('#selectYears');
     populateDropDown(selectYears, getYearsFromJson());
 
-    selectYears.addEventListener('mouseup',()=>{
-        console.log("Collecting data for the table...");
-        createTable(selectYears);
-    });
+    // selectYears.addEventListener('mouseup',()=>{
+    //     console.log("Collecting data for the table...");
+    //     createTable(selectYears);
+    // });
+
+    selectYears.addEventListener('change', createTable, false);
 }
 
 //method for init components in the user interface
@@ -72,14 +75,14 @@ function initHistogramInterface() {
 }
 
 
-function createTable(selectYears){
+function createTable(){
     // hide canvas
     canvas.style.display = "none";
     // display as block the table
     table.style.display = "block"
 
     //get selected year
-    const selectedYear = selectYears.options[selectYears.value].text;
+    const selectedYear = selectYears.options[this.value].text;
     const data = getDataByYear(parseInt(selectedYear));
     const caption = document.querySelector("caption");
     caption.innerText = `Lista date din anul ${selectedYear}`;;
@@ -108,7 +111,7 @@ function createTable(selectYears){
     addCellOnRow(firstCharactRow, dataJson.options["firstCharact"]);
     addCellOnRow(secondCharactRow, dataJson.options["secondCharact"]);
     addCellOnRow(thirdCharactRow, dataJson.options["thirdCharact"]);
-    
+
     data.forEach((item) => {
         // console.log(item)
         const th = document.createElement('th');
