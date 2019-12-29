@@ -105,28 +105,17 @@ function createTable(){
             numberOfCharact--;
         }
     }
-    // const tableRow = table.tHead.children[0];
     
-    // Object.keys(dataJson.options).forEach((key)=>{
-    //     if(key!=="default"){
-           
-    //     console.log(key, dataJson.options[key])
-    //     const tableRow = document.createElement("tr");
-    //     tableRow.id = key + "Row";
-    //     tbody.append(tableRow);
-    //     }
-    // })
-
-    const firstCharactRow = document.createElement("tr");
-    const secondCharactRow = document.createElement("tr");
-    const thirdCharactRow = document.createElement("tr");
-
-    tbody.append(firstCharactRow);
-    tbody.append(secondCharactRow);
-    tbody.append(thirdCharactRow);
-
+    Object.keys(dataJson.options).forEach((key)=>{
+        if(key!=="default"){
+           console.log(key, dataJson.options[key])
+            const tableRow = document.createElement("tr");
+            tableRow.id = key + "Row";
+            tbody.append(tableRow);
+        }
+    })
     
-
+    console.log(firstCharactRow);
     addCellOnRow(firstCharactRow, dataJson.options["firstCharact"]);
     addCellOnRow(secondCharactRow, dataJson.options["secondCharact"]);
     addCellOnRow(thirdCharactRow, dataJson.options["thirdCharact"]);
@@ -146,7 +135,6 @@ function createTable(){
 
 function addCellOnRow(row, item){
     const cell = document.createElement("td");
-    // console.log(item)
     cell.innerText = item;
     row.append(cell);
 }
