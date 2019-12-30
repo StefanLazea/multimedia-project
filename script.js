@@ -59,7 +59,6 @@ function initHistogramInterface() {
         selectCharact.addEventListener('mouseup', () => {
             firstDropdownSelected = selectCharact.value;
             //error handler pentru cand se alege doar o data
-            // console.log(parseInt(firstDropdownSelected) === 1);
             // if we don't select de default dropdown
             selectCountry.addEventListener('mouseup', () => {
                 secondDropDown = selectCountry.value;
