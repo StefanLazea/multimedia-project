@@ -6,6 +6,7 @@ let canvasW, canvasH;
 let table;
 let btnClearCanvas;
 let btnDrawHistogram;
+let btnBubbleChart;
 let selectYears;
 
 document.addEventListener('DOMContentLoaded', app);
@@ -22,6 +23,8 @@ function app() {
     btnClearCanvas = document.querySelector('#btnClearHistogram');
     btnClearCanvas.addEventListener('click', clearCanvas);
     
+    btnBubbleChart = document.querySelector("#btnBubbleChart");
+    btnBubbleChart.addEventListener('click', initBubleChart);
 
     let paragraf = document.querySelector('#graficParagraf');
     paragraf.append(addDropwdown('selectYears'));
@@ -31,6 +34,11 @@ function app() {
     selectYears.addEventListener('change', createTable, false);
 }
 
+function initBubleChart(){
+    canvas.style.display = "block";
+    table.style.display = "none";
+    btnClearCanvas.style.display = "block";
+}
 //method for init components in the user interface
 function initHistogramInterface() {
     //show canvas 
@@ -40,7 +48,7 @@ function initHistogramInterface() {
     table.style.display = "none";
     btnClearCanvas.style.display = "block";
 
-    //check if there are already 3 components; 
+    //check if there are already 4 components; 
     //in case we click the button histogram, this will put only once the needed components
     if (getLateralDiv.children.length === 4) {
         if (getLateralDiv.children.length < 5) {
