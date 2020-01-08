@@ -38,6 +38,52 @@ function initBubleChart(){
     canvas.style.display = "block";
     table.style.display = "none";
     btnClearCanvas.style.display = "block";
+
+    drawAxis();
+}
+function drawAxis(){
+    const grid = 5;
+    const xDistance = 29;
+    const yDistance = 1;
+    const xStartingPoint = 1;
+    const yStartingPoin = 1;
+
+    const verticalDistanceOx = Math.floor(canvasH/grid);
+    const horizontalDistanceOy = Math.floor(canvasW/grid);
+    for(let i=0;i<verticalDistanceOx;i++){
+        context.beginPath();
+        context.lineWidth = 0.5;
+        if(i === xDistance){
+            context.strokeStyle = "#000000";
+        }else{
+            context.strokeStyle = "#d4d6d5";
+        }
+        if(i!== verticalDistanceOx){
+            context.moveTo(0, grid*i+0.5);
+            context.lineTo(canvasW, grid*i+0.5);
+        }
+        context.stroke();
+
+
+    }
+    // Draw grid lines along Y-axis
+    for(i=0; i<=horizontalDistanceOy; i++) {
+        context.beginPath();
+        context.lineWidth = 0.5;
+        
+        // If line represents Y-axis draw in different color
+        if(i == yDistance) 
+            context.strokeStyle = "#000000";
+        else
+            context.strokeStyle = "#d4d6d5";
+        
+        if(i !== horizontalDistanceOy) {
+            context.moveTo(grid*i+0.5, 0);
+            context.lineTo(grid*i+0.5, canvasH);
+        }
+        context.stroke();
+    }
+    
 }
 //method for init components in the user interface
 function initHistogramInterface() {
@@ -72,6 +118,7 @@ function initHistogramInterface() {
             //error handler pentru cand se alege doar o data
             // if we don't select de default dropdown
             selectCountry.addEventListener('mouseup', () => {
+                clearCanvas();
                 secondDropDown = selectCountry.value;
                 draw(firstDropdownSelected, secondDropDown);
             });
@@ -79,7 +126,7 @@ function initHistogramInterface() {
     }
 }
 
-
+// create table
 function createTable(){
     // hide canvas
     canvas.style.display = "none";
@@ -239,7 +286,6 @@ function drawHistogramContent(data) {
     context.fillRect(0, 0, canvasW, canvasH);
     context.strokeRect(0, 0, canvasW, canvasH);
 
-
     context.fillStyle = 'orange';
     context.beginPath();
 
@@ -278,6 +324,7 @@ function populateDropDown(dropdown, data) {
     dropdown.style.margin = "10 auto"
 }
 
+
 function getCountriesFromJson() {
     const countries = [];
     dataJson.data.map(year => {
@@ -289,6 +336,7 @@ function getCountriesFromJson() {
     return countries;
 }
 
+// get years
 function getYearsFromJson() {
     const years = [];
     dataJson.data.map(data => {
@@ -297,6 +345,7 @@ function getYearsFromJson() {
     return years;
 }
 
+// get the data from json corresponding to the year given as param
 function getDataByYear(year){
     console.log("Data from " + year)
     let dataByYear;
