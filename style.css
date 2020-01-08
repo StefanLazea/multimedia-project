@@ -16,9 +16,9 @@
     width: 80%;
 }
 
-#btnHistogram {
+.center {
     display: block;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 #graficParagraf{

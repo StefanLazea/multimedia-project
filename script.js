@@ -5,6 +5,7 @@ let countries;
 let canvasW, canvasH;
 let table;
 let btnClearCanvas;
+let btnDrawHistogram;
 let selectYears;
 
 document.addEventListener('DOMContentLoaded', app);
@@ -15,7 +16,7 @@ function app() {
 
     initCanvas();
 
-    let btnDrawHistogram = document.querySelector('#btnHistogram');
+    btnDrawHistogram = document.querySelector('#btnHistogram');
     btnDrawHistogram.addEventListener('click', initHistogramInterface);
 
     btnClearCanvas = document.querySelector('#btnClearHistogram');
@@ -33,14 +34,16 @@ function app() {
 //method for init components in the user interface
 function initHistogramInterface() {
     //show canvas 
+    btnDrawHistogram.style.background = "#13ed4d"
+    btnDrawHistogram.style.borderColor = "transparent"
     canvas.style.display = "block";
     table.style.display = "none";
     btnClearCanvas.style.display = "block";
 
     //check if there are already 3 components; 
     //in case we click the button histogram, this will put only once the needed components
-    if (getLateralDiv.children.length === 3) {
-        if (getLateralDiv.children.length < 4) {
+    if (getLateralDiv.children.length === 4) {
+        if (getLateralDiv.children.length < 5) {
             getLateralDiv.appendChild(addDropwdown("selectCharact"));
             getLateralDiv.appendChild(addDropwdown("selectCountry"));
         }
@@ -216,6 +219,7 @@ function clearCanvas() {
     context.clearRect(0, 0, canvasW, canvasW);
     context.strokeStyle = "black";
     context.fillStyle = "black";
+    btnClearCanvas.style.display = "none";
 }
 
 // method that draws the histogram; initial phase without data
