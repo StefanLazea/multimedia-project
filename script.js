@@ -55,9 +55,9 @@ function initBubleChart(){
 function drawAxis(){
 
 
-    const verticalDistanceOx = Math.floor(canvasH/grid);
-    const horizontalDistanceOy = Math.floor(canvasW/grid);
-    for(let i=0;i<verticalDistanceOx;i++){
+    const verticalNumberOfLinesOx = Math.floor(canvasH/grid);
+    const horizontalNumberOfLinesOy = Math.floor(canvasW/grid);
+    for(let i=0;i<verticalNumberOfLinesOx;i++){
         context.beginPath();
         context.lineWidth = 1;
         if(i === xDistance){
@@ -66,13 +66,12 @@ function drawAxis(){
             context.strokeStyle = "#d4d6d5";
         }
         
-        console.log(i, grid*i+0.5)
         context.moveTo(0, grid*i+0.5);
         context.lineTo(canvasW, grid*i+0.5);
         
         context.stroke();
     }
-    for(i=0; i<=horizontalDistanceOy; i++) {
+    for(i=0; i<=horizontalNumberOfLinesOy; i++) {
         context.beginPath();
         context.lineWidth = 1;
         
@@ -91,11 +90,11 @@ function drawAxis(){
     // context.moveTo(yDistance*grid, xDistance*grid);
     context.translate(yDistance*grid, xDistance*grid);
 
-    for(i=0; i<(horizontalDistanceOy - yDistance); i++) {
+    for(i=0; i<(horizontalNumberOfLinesOy - yDistance); i++) {
         context.beginPath();
         context.lineWidth = 1;
         context.strokeStyle = "#000000";
-        if(i%5==0){
+        if(i%5 == 0){
             context.moveTo(grid*i+0.5, -3);
             context.lineTo(grid*i+0.5, 3);
             context.stroke();
@@ -105,15 +104,24 @@ function drawAxis(){
         }
         context.stroke();
 
-        // // Text value at that point
-        // context.font = '9px Arial';
-        // context.textAlign = 'start';
-        // context.fillText(xStartingPoint*i , grid*i-2, 15);
     }
 
+    for(i=0; i<xDistance; i++) {
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = "#000000";
+        if(i%5===0){
+            context.moveTo(-3, -grid*i+0.5);
+            context.lineTo(3, -grid*i+0.5);
+        }else{
+            context.moveTo(0, -grid*i+0.5);
+            context.lineTo(1, -grid*i+0.5);
+        }
+        context.stroke();
+    
+    }
     context.translate(-yDistance*grid, -xDistance*grid);
 
-   
 }
 
 //method for init components in the user interface
