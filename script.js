@@ -9,7 +9,7 @@ let btnDrawHistogram;
 let btnBubbleChart;
 let selectYears;
 const grid = 5;
-const xDistance = 27;
+const xDistance = 29;
 const yDistance = 1;
 const xStartingPoint = 1;
 const yStartingPoint = 1;
@@ -44,6 +44,10 @@ function initBubleChart(){
     canvas.style.display = "block";
     table.style.display = "none";
     btnClearCanvas.style.display = "block";
+    btnBubbleChart.style.background = "#13ed4d";
+    btnBubbleChart.style.borderColor = "transparent";
+    btnDrawHistogram.style.background = "#d4d6d5";
+
 
     drawAxis();
 }
@@ -67,14 +71,12 @@ function drawAxis(){
         context.lineTo(canvasW, grid*i+0.5);
         
         context.stroke();
-
-
     }
     for(i=0; i<=horizontalDistanceOy; i++) {
         context.beginPath();
         context.lineWidth = 1;
         
-        if(i == yDistance){ 
+        if(i === yDistance){ 
             context.strokeStyle = "#000000";
         }else{
             context.strokeStyle = "#d4d6d5";
@@ -89,16 +91,20 @@ function drawAxis(){
     // context.moveTo(yDistance*grid, xDistance*grid);
     context.translate(yDistance*grid, xDistance*grid);
 
-    for(i=1; i<(horizontalDistanceOy - yDistance); i++) {
+    for(i=0; i<(horizontalDistanceOy - yDistance); i++) {
         context.beginPath();
         context.lineWidth = 1;
         context.strokeStyle = "#000000";
-    
-        // Draw a tick mark 6px long (-3 to 3)
-        context.moveTo(grid*i+0.5, -3);
-        context.lineTo(grid*i+0.5, 3);
+        if(i%5==0){
+            context.moveTo(grid*i+0.5, -3);
+            context.lineTo(grid*i+0.5, 3);
+            context.stroke();
+        }else{
+            context.moveTo(grid*i+0.5, 0);
+            context.lineTo(grid*i+0.5, 1);
+        }
         context.stroke();
-    
+
         // // Text value at that point
         // context.font = '9px Arial';
         // context.textAlign = 'start';
@@ -109,9 +115,11 @@ function drawAxis(){
 
    
 }
+
 //method for init components in the user interface
 function initHistogramInterface() {
     //show canvas 
+    btnBubbleChart.style.background = "#d4d6d5"
     btnDrawHistogram.style.background = "#13ed4d"
     btnDrawHistogram.style.borderColor = "transparent"
     canvas.style.display = "block";
@@ -153,6 +161,9 @@ function initHistogramInterface() {
 
 // create table
 function createTable(){
+    btnDrawHistogram.style.background = "#d4d6d5";
+    btnBubbleChart.style.background = "#d4d6d5"
+
     // hide canvas
     canvas.style.display = "none";
     // display as block the table
