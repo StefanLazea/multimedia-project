@@ -8,6 +8,11 @@ let btnClearCanvas;
 let btnDrawHistogram;
 let btnBubbleChart;
 let selectYears;
+const grid = 5;
+const xDistance = 27;
+const yDistance = 1;
+const xStartingPoint = 1;
+const yStartingPoint = 1;
 
 document.addEventListener('DOMContentLoaded', app);
 
@@ -44,11 +49,7 @@ function initBubleChart(){
 }
 
 function drawAxis(){
-    const grid = 5;
-    const xDistance = 29;
-    const yDistance = 1;
-    const xStartingPoint = 1;
-    const yStartingPoin = 1;
+
 
     const verticalDistanceOx = Math.floor(canvasH/grid);
     const horizontalDistanceOy = Math.floor(canvasW/grid);
@@ -85,8 +86,28 @@ function drawAxis(){
         context.stroke();
     }
 
-    context.moveTo(yDistance*grid, xDistance*grid);
+    // context.moveTo(yDistance*grid, xDistance*grid);
+    context.translate(yDistance*grid, xDistance*grid);
 
+    for(i=1; i<(horizontalDistanceOy - yDistance); i++) {
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = "#000000";
+    
+        // Draw a tick mark 6px long (-3 to 3)
+        context.moveTo(grid*i+0.5, -3);
+        context.lineTo(grid*i+0.5, 3);
+        context.stroke();
+    
+        // // Text value at that point
+        // context.font = '9px Arial';
+        // context.textAlign = 'start';
+        // context.fillText(xStartingPoint*i , grid*i-2, 15);
+    }
+
+    context.translate(-yDistance*grid, -xDistance*grid);
+
+   
 }
 //method for init components in the user interface
 function initHistogramInterface() {
@@ -121,6 +142,7 @@ function initHistogramInterface() {
             //error handler pentru cand se alege doar o data
             // if we don't select de default dropdown
             selectCountry.addEventListener('mouseup', () => {
+                context.beginPath();
                 clearCanvas();
                 secondDropDown = selectCountry.value;
                 draw(firstDropdownSelected, secondDropDown);
