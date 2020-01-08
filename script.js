@@ -8,6 +8,8 @@ let btnClearCanvas;
 let btnDrawHistogram;
 let btnBubbleChart;
 let selectYears;
+let verticalNumberOfLinesOx;
+let horizontalNumberOfLinesOy;
 const grid = 5;
 const xDistance = 29;
 const yDistance = 1;
@@ -49,81 +51,97 @@ function initBubleChart(){
     btnDrawHistogram.style.background = "#d4d6d5";
 
 
-    drawAxis();
+    drawBubbleChart();
 }
 
-function drawAxis(){
+function drawBubbleChart(){
+    verticalNumberOfLinesOx = Math.floor(canvasH/grid);
+    horizontalNumberOfLinesOy = Math.floor(canvasW/grid);
 
-
-    const verticalNumberOfLinesOx = Math.floor(canvasH/grid);
-    const horizontalNumberOfLinesOy = Math.floor(canvasW/grid);
     for(let i=0;i<verticalNumberOfLinesOx;i++){
-        context.beginPath();
-        context.lineWidth = 1;
-        if(i === xDistance){
-            context.strokeStyle = "#000000";
-        }else{
-            context.strokeStyle = "#d4d6d5";
-        }
-        
-        context.moveTo(0, grid*i+0.5);
-        context.lineTo(canvasW, grid*i+0.5);
-        
-        context.stroke();
-    }
-    for(i=0; i<=horizontalNumberOfLinesOy; i++) {
-        context.beginPath();
-        context.lineWidth = 1;
-        
-        if(i === yDistance){ 
-            context.strokeStyle = "#000000";
-        }else{
-            context.strokeStyle = "#d4d6d5";
-        }
-       
-        context.moveTo(grid*i+0.5, 0);
-        context.lineTo(grid*i+0.5, canvasH);
-    
-        context.stroke();
+        drawAxis(i, xDistance, 0, grid*i+0.5, canvasW, grid*i+0.5);
     }
 
-    // context.moveTo(yDistance*grid, xDistance*grid);
+    for(i=0; i<=horizontalNumberOfLinesOy; i++) {
+        drawAxis(i, yDistance, grid*i+0.5, 0, grid*i+0.5, canvasH);
+    }
+    // move to the intersection of Ox with Oy
     context.translate(yDistance*grid, xDistance*grid);
 
-    for(i=0; i<(horizontalNumberOfLinesOy - yDistance); i++) {
-        context.beginPath();
-        context.lineWidth = 1;
-        context.strokeStyle = "#000000";
-        if(i%5 == 0){
-            context.moveTo(grid*i+0.5, -3);
-            context.lineTo(grid*i+0.5, 3);
-            context.stroke();
-        }else{
-            context.moveTo(grid*i+0.5, 0);
-            context.lineTo(grid*i+0.5, 1);
-        }
-        context.stroke();
+    for(i=1; i<(horizontalNumberOfLinesOy - yDistance); i++) {
+        drawAxisMarks(i, grid*i+0.5, grid*i+0.5, false);
+        // context.beginPath();
+        // context.lineWidth = 1;
+        // context.strokeStyle = "#000000";
+        // if(i%5 == 0){
+        //     context.moveTo(grid*i+0.5, -3);
+        //     context.lineTo(grid*i+0.5, 3);
+        //     context.stroke();
+        // }else{
+        //     context.moveTo(grid*i+0.5, 0);
+        //     context.lineTo(grid*i+0.5, 1);
+        // }
+        // context.stroke();
 
     }
 
-    for(i=0; i<xDistance; i++) {
-        context.beginPath();
-        context.lineWidth = 1;
-        context.strokeStyle = "#000000";
-        if(i%5===0){
-            context.moveTo(-3, -grid*i+0.5);
-            context.lineTo(3, -grid*i+0.5);
-        }else{
-            context.moveTo(0, -grid*i+0.5);
-            context.lineTo(1, -grid*i+0.5);
-        }
-        context.stroke();
+    for(i=1; i<xDistance; i++) {
+        drawAxisMarks(i, grid*i+0.5, grid*i+0.5, true);
+    //     context.beginPath();
+    //     context.lineWidth = 1;
+    //     context.strokeStyle = "#000000";
+    //     if(i%5===0){
+    //         context.moveTo(-3, -grid*i+0.5);
+    //         context.lineTo(3, -grid*i+0.5);
+    //     }else{
+    //         context.moveTo(0, -grid*i+0.5);
+    //         context.lineTo(1, -grid*i+0.5);
+    //     }
+    //     context.stroke();
     
     }
     context.translate(-yDistance*grid, -xDistance*grid);
 
 }
 
+
+function drawAxis(index, linePosition, moveToX, moveToY, lineToX, lineToY){
+    context.beginPath();
+    context.lineWidth = 1;
+    if(index === linePosition){
+        context.strokeStyle = "#000000";
+    }else{
+        context.strokeStyle = "#d4d6d5";
+    }
+    
+    context.moveTo(moveToX,  moveToY);
+    context.lineTo(lineToX, lineToY);
+    context.stroke();
+}
+
+function drawAxisMarks(index, moveTo, lineTo, isOy){
+    context.beginPath();
+    context.lineWidth = 1;
+    context.strokeStyle = "#000000";
+    if(index % 5 === 0){
+        if(isOy){
+            context.moveTo(-3, -moveTo);
+            context.lineTo(3, -lineTo);
+        }else{
+            context.moveTo(moveTo, -3);
+            context.lineTo(lineTo, 3);
+        }
+    }else{
+        if(isOy){
+            context.moveTo(0, -moveTo);
+            context.lineTo(1, -lineTo);
+        }else{
+            context.moveTo(moveTo, 0);
+            context.lineTo(lineTo, 1);
+        }
+    }
+    context.stroke();
+}
 //method for init components in the user interface
 function initHistogramInterface() {
     //show canvas 
