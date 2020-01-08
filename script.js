@@ -69,41 +69,17 @@ function drawBubbleChart(){
     context.translate(yDistance*grid, xDistance*grid);
 
     for(i=1; i<(horizontalNumberOfLinesOy - yDistance); i++) {
+        // false is for specifing that is not the Oy axis
         drawAxisMarks(i, grid*i+0.5, grid*i+0.5, false);
-        // context.beginPath();
-        // context.lineWidth = 1;
-        // context.strokeStyle = "#000000";
-        // if(i%5 == 0){
-        //     context.moveTo(grid*i+0.5, -3);
-        //     context.lineTo(grid*i+0.5, 3);
-        //     context.stroke();
-        // }else{
-        //     context.moveTo(grid*i+0.5, 0);
-        //     context.lineTo(grid*i+0.5, 1);
-        // }
-        // context.stroke();
-
     }
 
     for(i=1; i<xDistance; i++) {
+        // true -> Oy axis; because it created upside down
         drawAxisMarks(i, grid*i+0.5, grid*i+0.5, true);
-    //     context.beginPath();
-    //     context.lineWidth = 1;
-    //     context.strokeStyle = "#000000";
-    //     if(i%5===0){
-    //         context.moveTo(-3, -grid*i+0.5);
-    //         context.lineTo(3, -grid*i+0.5);
-    //     }else{
-    //         context.moveTo(0, -grid*i+0.5);
-    //         context.lineTo(1, -grid*i+0.5);
-    //     }
-    //     context.stroke();
-    
     }
+    // to go back to the initial canvas top-left position
     context.translate(-yDistance*grid, -xDistance*grid);
-
 }
-
 
 function drawAxis(index, linePosition, moveToX, moveToY, lineToX, lineToY){
     context.beginPath();
