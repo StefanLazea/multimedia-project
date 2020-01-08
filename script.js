@@ -35,12 +35,14 @@ function app() {
 }
 
 function initBubleChart(){
+    clearCanvas();
     canvas.style.display = "block";
     table.style.display = "none";
     btnClearCanvas.style.display = "block";
 
     drawAxis();
 }
+
 function drawAxis(){
     const grid = 5;
     const xDistance = 29;
@@ -52,38 +54,39 @@ function drawAxis(){
     const horizontalDistanceOy = Math.floor(canvasW/grid);
     for(let i=0;i<verticalDistanceOx;i++){
         context.beginPath();
-        context.lineWidth = 0.5;
+        context.lineWidth = 1;
         if(i === xDistance){
             context.strokeStyle = "#000000";
         }else{
             context.strokeStyle = "#d4d6d5";
         }
-        if(i!== verticalDistanceOx){
-            context.moveTo(0, grid*i+0.5);
-            context.lineTo(canvasW, grid*i+0.5);
-        }
+        
+        console.log(i, grid*i+0.5)
+        context.moveTo(0, grid*i+0.5);
+        context.lineTo(canvasW, grid*i+0.5);
+        
         context.stroke();
 
 
     }
-    // Draw grid lines along Y-axis
     for(i=0; i<=horizontalDistanceOy; i++) {
         context.beginPath();
-        context.lineWidth = 0.5;
+        context.lineWidth = 1;
         
-        // If line represents Y-axis draw in different color
-        if(i == yDistance) 
+        if(i == yDistance){ 
             context.strokeStyle = "#000000";
-        else
+        }else{
             context.strokeStyle = "#d4d6d5";
-        
-        if(i !== horizontalDistanceOy) {
-            context.moveTo(grid*i+0.5, 0);
-            context.lineTo(grid*i+0.5, canvasH);
         }
+       
+        context.moveTo(grid*i+0.5, 0);
+        context.lineTo(grid*i+0.5, canvasH);
+    
         context.stroke();
     }
-    
+
+    context.moveTo(yDistance*grid, xDistance*grid);
+
 }
 //method for init components in the user interface
 function initHistogramInterface() {
