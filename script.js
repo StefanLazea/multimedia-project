@@ -147,36 +147,30 @@ function initHistogramInterface() {
     table.style.display = "none";
     btnClearCanvas.style.display = "block";
 
+    let selectCharact = document.getElementById("selectCharact");
+    let selectCountry = document.getElementById("selectCountry");
     //check if there are already 4 components; 
     //in case we click the button histogram, this will put only once the needed components
-    if (getLateralDiv.children.length === 4) {
-        if (getLateralDiv.children.length < 5) {
-            getLateralDiv.appendChild(addDropwdown("selectCharact"));
-            getLateralDiv.appendChild(addDropwdown("selectCountry"));
-        }
 
-        //get countries
-        countries = getCountriesFromJson();
+    //get countries
+    countries = getCountriesFromJson();
 
-        //get select and populate them with the data from json
-        let selectCharact = document.querySelector('#selectCharact');
-        populateDropDown(selectCharact, dataJson.options);
+    //get select and populate them with the data from json
+    populateDropDown(selectCharact, dataJson.options);
+    populateDropDown(selectCountry, countries);
 
-        let selectCountry = document.querySelector("#selectCountry");
-        populateDropDown(selectCountry, countries);
+    //check for changes in the way canvas is designed
+    selectCharact.addEventListener('mouseup', () => {
+        firstDropdownSelected = selectCharact.value;
+        //error handler pentru cand se alege doar o data
+        // if we don't select de default dropdown
+        selectCountry.addEventListener('mouseup', () => {
+            context.beginPath();
+            secondDropDown = selectCountry.value;
+            draw(firstDropdownSelected, secondDropDown);
+        });
+    })
 
-        //check for changes in the way canvas is designed
-        selectCharact.addEventListener('mouseup', () => {
-            firstDropdownSelected = selectCharact.value;
-            //error handler pentru cand se alege doar o data
-            // if we don't select de default dropdown
-            selectCountry.addEventListener('mouseup', () => {
-                context.beginPath();
-                secondDropDown = selectCountry.value;
-                draw(firstDropdownSelected, secondDropDown);
-            });
-        })
-    }
 }
 
 // create table
