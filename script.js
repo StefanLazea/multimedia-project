@@ -83,7 +83,21 @@ function drawBubbleChart(){
 }
 
 function drawBubbles(){
-    console.log(dataJson)
+    years = getYearsFromJson();
+    let yearLabel = document.querySelector("p");
+    years.forEach((item)=>{
+        yearLabel.innerText = item;
+        data = getDataByYear(item);
+
+        if(data != null){
+            console.log(item, data);
+            drawBubble(data, item);
+        }
+    })
+}
+
+function drawBubble(data, year){
+
 }
 
 function drawAxis(index, linePosition, moveToX, moveToY, lineToX, lineToY){
