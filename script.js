@@ -50,7 +50,6 @@ function initBubleChart(){
     btnBubbleChart.style.borderColor = "transparent";
     btnDrawHistogram.style.background = "#d4d6d5";
 
-
     drawBubbleChart();
 }
 
@@ -79,6 +78,12 @@ function drawBubbleChart(){
     }
     // to go back to the initial canvas top-left position
     context.translate(-yDistance*grid, -xDistance*grid);
+
+    drawBubbles();
+}
+
+function drawBubbles(){
+    console.log(dataJson)
 }
 
 function drawAxis(index, linePosition, moveToX, moveToY, lineToX, lineToY){
@@ -153,7 +158,6 @@ function initHistogramInterface() {
             // if we don't select de default dropdown
             selectCountry.addEventListener('mouseup', () => {
                 context.beginPath();
-                clearCanvas();
                 secondDropDown = selectCountry.value;
                 draw(firstDropdownSelected, secondDropDown);
             });
