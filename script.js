@@ -104,6 +104,9 @@ function drawBubbles(){
     context.fillText("ro", 100, -100);
     context.lineTo(200,200);
     context.fill();
+
+    context.translate(-yDistance*grid, -xDistance*grid);
+
 }
 
 function updateData(year){
