@@ -16,14 +16,20 @@
     width: 80%;
 }
 
+#graficParagraf {
+    bottom: 50px !important;
+    margin-left: -100px !important;
+}
+
+#displayYear {
+    position: absolute;
+    left: 50%;
+    margin-left: -20px;
+}
+
 .center {
     display: block;
     margin: 10px auto;
-}
-
-#graficParagraf{
-    bottom: 50px !important;
-    margin-left: -100px !important;
 }
 
 .center-bottom {

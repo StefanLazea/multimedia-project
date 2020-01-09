@@ -8,6 +8,7 @@ let btnClearCanvas;
 let btnDrawHistogram;
 let btnBubbleChart;
 let selectYears;
+let yearLabel;
 let verticalNumberOfLinesOx;
 let horizontalNumberOfLinesOy;
 const grid = 5;
@@ -84,21 +85,35 @@ function drawBubbleChart(){
 
 function drawBubbles(){
     years = getYearsFromJson();
-    let yearLabel = document.querySelector("p");
-    years.forEach((item)=>{
-        yearLabel.innerText = item;
-        data = getDataByYear(item);
-
-        if(data != null){
-            console.log(item, data);
-            drawBubble(data, item);
-        }
+    yearLabel = document.getElementById("displayYear");
+    yearLabel.style.display = "block";
+    console.log(years.length)
+    let startYear = years[0], endYear = years[years.length-1];
+    console.log(startYear, endYear);
+    dataJson.data.forEach((item)=>{
+        console.log(item)
     })
 }
 
-function drawBubble(data, year){
+function updateData(year){
+    // context.translate(yDistance*grid, xDistance*grid);
+    yearLabel.innerText=year;
+    data = getDataByYear(year);
 
+    if(data != null){
+        console.log(year, data);
+        // drawBubble(data, year);
+    }
+
+    year => {
+        year.countries.map(indexCountry => {
+            if (indexCountry.name === countryName) {
+                countryData.push(indexCountry.firstCharact);
+            }
+        })}
 }
+
+
 
 function drawAxis(index, linePosition, moveToX, moveToY, lineToX, lineToY){
     context.beginPath();
@@ -145,6 +160,7 @@ function initHistogramInterface() {
     btnDrawHistogram.style.borderColor = "transparent"
     canvas.style.display = "block";
     table.style.display = "none";
+
     btnClearCanvas.style.display = "block";
 
     let selectCharact = document.getElementById("selectCharact");
