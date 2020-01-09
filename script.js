@@ -147,13 +147,16 @@ function drawAxisMarks(index, moveTo, lineTo, isOy){
     context.beginPath();
     context.lineWidth = 1;
     context.strokeStyle = "#000000";
-    if(index % 5 === 0){
+    if(index % 2 === 0){
         if(isOy){
-            context.moveTo(-3, -moveTo);
-            context.lineTo(3, -lineTo);
+            context.moveTo(-10, -moveTo);
+            context.lineTo(10, -lineTo);
+            context.stroke();
+
         }else{
-            context.moveTo(moveTo, -3);
-            context.lineTo(lineTo, 3);
+            context.moveTo(moveTo, -10);
+            context.lineTo(lineTo, 10);
+            context.stroke();
         }
     }else{
         if(isOy){
@@ -163,8 +166,9 @@ function drawAxisMarks(index, moveTo, lineTo, isOy){
             context.moveTo(moveTo, 0);
             context.lineTo(lineTo, 1);
         }
+        context.stroke();
+
     }
-    context.stroke();
 }
 //method for init components in the user interface
 function initHistogramInterface() {
@@ -195,6 +199,8 @@ function initHistogramInterface() {
         //error handler pentru cand se alege doar o data
         // if we don't select de default dropdown
         selectCountry.addEventListener('mouseup', () => {
+            btnBubbleChart.style.background = "#d4d6d5";
+            btnDrawHistogram.style.background = "#13ed4d";
             context.beginPath();
             secondDropDown = selectCountry.value;
             draw(firstDropdownSelected, secondDropDown);
