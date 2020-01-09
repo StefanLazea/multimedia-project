@@ -11,8 +11,8 @@ let selectYears;
 let yearLabel;
 let verticalNumberOfLinesOx;
 let horizontalNumberOfLinesOy;
-const grid = 5;
-const xDistance = 29;
+const grid = 30;
+const xDistance = 25;
 const yDistance = 1;
 const xStartingPoint = 1;
 const yStartingPoint = 1;
@@ -78,7 +78,6 @@ function drawBubbleChart(){
         drawAxisMarks(i, grid*i+0.5, grid*i+0.5, true);
     }
     // to go back to the initial canvas top-left position
-    context.translate(-yDistance*grid, -xDistance*grid);
 
     drawBubbles();
 }
@@ -93,6 +92,18 @@ function drawBubbles(){
     dataJson.data.forEach((item)=>{
         console.log(item)
     })
+    // for(let country of countries){
+        
+    // }
+    context.beginPath(); //ca sa le separam
+    context.arc(100, -100, 10, 0, 2 * Math.PI);
+    context.fill();
+    context.stroke();
+
+    context.fillStyle = 'black';
+    context.fillText("ro", 100, -100);
+    context.lineTo(200,200);
+    context.fill();
 }
 
 function updateData(year){
@@ -435,5 +446,7 @@ function initCanvas() {
     canvas = document.querySelector('canvas');
     context = canvas.getContext('2d');
     canvasH = canvas.height;
+    console.log(canvasH)
     canvasW = canvas.width;
+    console.log(canvas.width)
 }
