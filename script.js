@@ -90,9 +90,9 @@ function drawBubbles() {
 
 
     data = getDataByYear(startYear);
-
+   
     //find the size in pixels for the Ox axis
-    console.log((canvasW/grid - yDistance)*grid)
+    // console.log((canvasW/grid - yDistance)*grid)
 
     // dataJson.data.map(item=>{
     //     item.countries.filter(found=>found.)
@@ -114,19 +114,7 @@ function drawBubbles() {
       
     })
 
-
-    // it's negative due to the fact that the Oy axis is opposite of the canvas going
-    // context.fillStyle = "#f5e74c"
-    // context.arc(100, -100, 10, 0, 2 * Math.PI);
-    // context.fill();
-    // context.stroke();
-
-    // context.fillStyle = 'red';
-    // context.fillText("ro", 100, -120);
-    // context.lineTo(200, 200);
-
     context.translate(-yDistance * grid, -xDistance * grid);
-
 }
 
 function drawBubble(data, color, nameColor) {
