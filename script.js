@@ -363,10 +363,11 @@ function draw(charactSelectValue, countrySelectValue) {
 // todo: remove selects and buttons in the interface
 function clearCanvas() {
     // console.log(isChartAction)
-    // if (isChartAction) {
-    //     context.translate(-yDistance * grid, -xDistance * grid);
-    //     clearInterval(interval);
-    // }
+    if (isChartAction === true) {
+        context.translate(-yDistance * grid, -xDistance * grid);
+        clearInterval(interval);
+        isChartAction = false;
+    }
     console.log("Canvas cleared");
     context.clearRect(0, 0, canvasW, canvasW);
     context.strokeStyle = "black";
