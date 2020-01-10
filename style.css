@@ -46,6 +46,7 @@
 .center-table {
     position: absolute;
     left: 50%;
+    margin-left: -150px;
 }
 
 table {

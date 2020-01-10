@@ -204,6 +204,8 @@ function initHistogramInterface() {
             yearLabel.style.display = "none";
             context.beginPath();
             secondDropDown = selectCountry.value;
+            canvas.style.display = "block";
+            table.style.display = "none";
 
             if (isChartAction === true) {
                 context.translate(-yDistance * grid, -xDistance * grid);
@@ -221,7 +223,13 @@ function createTable() {
     btnDrawHistogram.style.background = "#d4d6d5";
     btnBubbleChart.style.background = "#d4d6d5"
     // hide canvas
-    canvas.style.display = "none";
+    if (isChartAction === true) {
+        table.style.marginTop = canvasH + 100;
+        table.style.marginLeft = "-250px";
+    } else {
+        canvas.style.display = "none";
+        yearLabel.style.display = "none";
+    }
     // display as block the table
     table.style.display = "block"
 
@@ -233,8 +241,8 @@ function createTable() {
     const caption = document.querySelector("caption");
     caption.innerText = `Lista date din anul ${selectedYear}`;
 
-    const thead = document.querySelector("thead");
 
+    const thead = document.querySelector("thead");
     // deletes the first row, to make sure we don't do duplicated values
     thead.deleteRow(0);
 
@@ -261,7 +269,6 @@ function createTable() {
     initRows(tbody);
 
     yearsData.forEach((item) => {
-
         // Add countries name in the thead row of the table
         initCustomHeader(row, item.name);
 
@@ -364,6 +371,9 @@ function draw(charactSelectValue, countrySelectValue) {
 function clearCanvas() {
     // console.log(isChartAction)
     if (isChartAction === true) {
+        table.style.marginTop = "5%";
+        table.style.display = "none";
+        yearLabel.style.display = "none";
         context.translate(-yDistance * grid, -xDistance * grid);
         clearInterval(interval);
         isChartAction = false;
