@@ -86,47 +86,59 @@ function drawBubbles() {
     years = getYearsFromJson();
     yearLabel = document.getElementById("displayYear");
     yearLabel.style.display = "block";
-    console.log(years.length)
     let startYear = years[0], endYear = years[years.length - 1];
-    console.log(startYear, endYear);
-    dataJson.data.forEach((item) => {
-        console.log(item)
-    })
-    // for(let country of countries){
 
-    // }
-    context.beginPath(); //ca sa le separam
+
+    data = getDataByYear(startYear);
+
+    //find the size in pixels for the Ox axis
+    console.log((canvasW/grid - yDistance)*grid)
+
+    // dataJson.data.map(item=>{
+    //     item.countries.filter(found=>found.)
+    // })
+
+    data.forEach((data)=>{
+        context.beginPath(); //ca sa le separam
+        if(data.name === "Romania"){
+            drawBubble(data, "#f5e74c", "black")
+        }
+        if(data.name === "Ungaria"){
+            drawBubble(data, "#50eb31", "black")
+
+        }
+        else{
+            drawBubble(data, "#3090f0", "black")
+
+        }
+      
+    })
+
 
     // it's negative due to the fact that the Oy axis is opposite of the canvas going
-    context.arc(100, -100, 10, 0, 2 * Math.PI);
-    context.fill();
-    context.stroke();
+    // context.fillStyle = "#f5e74c"
+    // context.arc(100, -100, 10, 0, 2 * Math.PI);
+    // context.fill();
+    // context.stroke();
 
-    context.fillStyle = 'red';
-    context.fillText("ro", 100, -120);
-    context.lineTo(200, 200);
+    // context.fillStyle = 'red';
+    // context.fillText("ro", 100, -120);
+    // context.lineTo(200, 200);
 
     context.translate(-yDistance * grid, -xDistance * grid);
 
 }
 
-function updateData(year) {
-    // context.translate(yDistance*grid, xDistance*grid);
-    yearLabel.innerText = year;
-    data = getDataByYear(year);
+function drawBubble(data, color, nameColor) {
+    context.fillStyle = color;
+    console.log(data.firstCharact, data.secondCharact, data.thirdCharact);
+    context.arc(grid + data.firstCharact, -(grid + data.secondCharact), data.thirdCharact, 0, 2 * Math.PI);
+    context.fill();
+    context.stroke();
 
-    if (data != null) {
-        console.log(year, data);
-        // drawBubble(data, year);
-    }
-
-    year => {
-        year.countries.map(indexCountry => {
-            if (indexCountry.name === countryName) {
-                countryData.push(indexCountry.firstCharact);
-            }
-        })
-    }
+    context.fillStyle = nameColor;
+    context.fillText(data.name.substring(0,2), grid + data.firstCharact, -(grid + data.secondCharact + 10));
+    console.log(data);
 }
 
 
@@ -454,7 +466,5 @@ function initCanvas() {
     canvas = document.querySelector('canvas');
     context = canvas.getContext('2d');
     canvasH = canvas.height;
-    console.log(canvasH)
     canvasW = canvas.width;
-    console.log(canvas.width)
 }
