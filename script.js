@@ -11,6 +11,8 @@ let selectYears;
 let yearLabel;
 let verticalNumberOfLinesOx;
 let horizontalNumberOfLinesOy;
+let interval;
+let isChartAction = false;
 const grid = 30;
 const xDistance = 25;
 const yDistance = 1;
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', app);
 function app() {
     getLateralDiv = document.getElementById('lateral-bar');
     table = document.querySelector("table");
+    yearLabel = document.getElementById("displayYear");
 
     initCanvas();
 
@@ -44,6 +47,7 @@ function app() {
 
 function initBubleChart() {
     clearCanvas();
+    isChartAction = true;
     canvas.style.display = "block";
     table.style.display = "none";
     btnClearCanvas.style.display = "block";
@@ -80,21 +84,26 @@ function drawBubbleChart() {
     // to go back to the initial canvas top-left position
 
     years = getYearsFromJson();
-    yearLabel = document.getElementById("displayYear");
-    yearLabel.style.display = "block";
+
     let startYear = years[0], endYear = years[years.length - 1];
 
     let currentYear = startYear;
     interval = setInterval(function () {
-        if (currentYear < endYear) {
+        if (currentYear <= endYear) {
             data = getDataByYear(currentYear);
+            updateLabel(currentYear);
             drawBubbles(data);
             currentYear++;
         } else {
-            clearInterval(interval)
+            clearInterval(interval);
         }
     }, 200)
+}
 
+function updateLabel(year) {
+    yearLabel.innerText = year;
+    yearLabel.style.fontSize = "x-large";
+    yearLabel.style.display = "block";
 }
 
 function drawBubbles(data) {
@@ -122,9 +131,7 @@ function drawBubble(data, color, nameColor) {
 
     context.fillStyle = nameColor;
     context.fillText(data.name.substring(0, 2), grid + data.firstCharact, -(grid + data.secondCharact + 10));
-    // console.log(data);
 }
-
 
 
 function drawAxis(index, linePosition, moveToX, moveToY, lineToX, lineToY) {
@@ -178,8 +185,6 @@ function initHistogramInterface() {
 
     let selectCharact = document.getElementById("selectCharact");
     let selectCountry = document.getElementById("selectCountry");
-    //check if there are already 4 components; 
-    //in case we click the button histogram, this will put only once the needed components
 
     //get countries
     countries = getCountriesFromJson();
@@ -196,8 +201,14 @@ function initHistogramInterface() {
         selectCountry.addEventListener('mouseup', () => {
             btnBubbleChart.style.background = "#d4d6d5";
             btnDrawHistogram.style.background = "#13ed4d";
+            yearLabel.style.display = "none";
             context.beginPath();
             secondDropDown = selectCountry.value;
+
+            if (isChartAction === true) {
+                context.translate(-yDistance * grid, -xDistance * grid);
+                clearInterval(interval)
+            }
             draw(firstDropdownSelected, secondDropDown);
         });
     })
@@ -208,7 +219,6 @@ function initHistogramInterface() {
 function createTable() {
     btnDrawHistogram.style.background = "#d4d6d5";
     btnBubbleChart.style.background = "#d4d6d5"
-
     // hide canvas
     canvas.style.display = "none";
     // display as block the table
@@ -351,7 +361,12 @@ function draw(charactSelectValue, countrySelectValue) {
 // clears canvas
 // todo: remove selects and buttons in the interface
 function clearCanvas() {
-    console.log("Canvas cleared")
+    // console.log(isChartAction)
+    // if (isChartAction) {
+    //     context.translate(-yDistance * grid, -xDistance * grid);
+    //     clearInterval(interval);
+    // }
+    console.log("Canvas cleared");
     context.clearRect(0, 0, canvasW, canvasW);
     context.strokeStyle = "black";
     context.fillStyle = "black";
