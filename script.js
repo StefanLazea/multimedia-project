@@ -96,14 +96,15 @@ function drawBubbles() {
 
     // }
     context.beginPath(); //ca sa le separam
+
+    // it's negative due to the fact that the Oy axis is opposite of the canvas going
     context.arc(100, -100, 10, 0, 2 * Math.PI);
     context.fill();
     context.stroke();
 
-    context.fillStyle = 'black';
-    context.fillText("ro", 100, -100);
+    context.fillStyle = 'red';
+    context.fillText("ro", 100, -120);
     context.lineTo(200, 200);
-    context.fill();
 
     context.translate(-yDistance * grid, -xDistance * grid);
 
