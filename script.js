@@ -207,7 +207,8 @@ function initHistogramInterface() {
 
             if (isChartAction === true) {
                 context.translate(-yDistance * grid, -xDistance * grid);
-                clearInterval(interval)
+                clearInterval(interval);
+                isChartAction = false;
             }
             draw(firstDropdownSelected, secondDropDown);
         });
