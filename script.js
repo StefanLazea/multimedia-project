@@ -89,12 +89,19 @@ function drawBubbleChart() {
         // true -> Oy axis; because it created upside down
         drawAxisMarks(i, grid * i + 0.5, grid * i + 0.5, true);
     }
-    // to go back to the initial canvas top-left position
+    context.translate(-yDistance * grid, -xDistance * grid);
 
+    //set interval
     years = getYearsFromJson();
+    context.color
+    context.font = "bold 15px Arial"
+    context.fillText(dataJson.options["firstCharact"], (canvasW / grid) * xDistance + 100,
+        (canvasH / grid) * xDistance + 120)
+    context.fillText(dataJson.options["secondCharact"], (canvasW / grid) * yDistance + 20,
+        (canvasH / grid) * yDistance)
+    context.translate(yDistance * grid, xDistance * grid);
 
     let startYear = years[0], endYear = years[years.length - 1];
-
     let currentYear = startYear;
     interval = setInterval(function () {
         if (currentYear <= endYear) {
@@ -105,7 +112,7 @@ function drawBubbleChart() {
         } else {
             clearInterval(interval);
         }
-    }, 200)
+    }, 200);
 }
 
 /**
@@ -154,6 +161,7 @@ function drawBubble(data, color, nameColor) {
     context.stroke();
 
     context.fillStyle = nameColor;
+    context.font = "bold 16px Arial";
     context.fillText(data.name.substring(0, 2), grid + data.firstCharact, -(grid + data.secondCharact + 10));
 }
 /**
@@ -209,8 +217,8 @@ function drawAxisMarks(index, moveTo, lineTo, isOy) {
         }
     }
     context.stroke();
-
 }
+
 //method for init components in the user interface
 function initHistogramInterface() {
     //show canvas 
@@ -264,7 +272,8 @@ function createTable() {
     // hide canvas
     if (isChartAction === true) {
         table.style.marginTop = canvasH + 100;
-        table.style.marginLeft = "-250px";
+        table.style.marginLeft = "-270px";
+
     } else {
         canvas.style.display = "none";
         yearLabel.style.display = "none";
