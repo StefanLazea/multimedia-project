@@ -71,7 +71,7 @@
                     "name": "Bulgaria",
                     "firstCharact": 133.2,
                     "secondCharact": 112.7,
-                    "thirdCharact": 40
+                    "thirdCharact": 12
                 }
             ]
         },
@@ -600,7 +600,7 @@
                     "name": "Bulgaria",
                     "firstCharact": 33.6,
                     "secondCharact": 11.1,
-                    "thirdCharact": 5.84
+                    "thirdCharact": 50.84
                 }
             ]
         },
@@ -632,14 +632,14 @@
             "countries": [
                 {
                     "name": "Romania",
-                    "firstCharact": 26.6,
-                    "secondCharact": 3.97,
-                    "thirdCharact": 9.03
+                    "firstCharact": 106.6,
+                    "secondCharact": 18.97,
+                    "thirdCharact": 19.03
                 },
                 {
                     "name": "Ungaria",
                     "firstCharact": 58.75,
-                    "secondCharact": 4.04,
+                    "secondCharact": 84.04,
                     "thirdCharact": 15.8
                 },
                 {
@@ -678,8 +678,8 @@
             "countries": [
                 {
                     "name": "Romania",
-                    "firstCharact": 28,
-                    "secondCharact": 4.01,
+                    "firstCharact": 288,
+                    "secondCharact": 100.01,
                     "thirdCharact": 9.63
                 },
                 {
@@ -708,13 +708,13 @@
                 {
                     "name": "Ungaria",
                     "firstCharact": 41.12,
-                    "secondCharact": 3.38,
+                    "secondCharact": 103.38,
                     "thirdCharact": 17.7
                 },
                 {
                     "name": "Bulgaria",
                     "firstCharact": 21.9,
-                    "secondCharact": 1.56,
+                    "secondCharact": 201.56,
                     "thirdCharact": 9.67
                 }
             ]
@@ -724,20 +724,20 @@
             "countries": [
                 {
                     "name": "Romania",
-                    "firstCharact": 25.6,
-                    "secondCharact": 3.42,
+                    "firstCharact": 134.6,
+                    "secondCharact": 329.42,
                     "thirdCharact": 12.1
                 },
                 {
                     "name": "Ungaria",
                     "firstCharact": 56.89,
-                    "secondCharact": 2.94,
+                    "secondCharact": 290.94,
                     "thirdCharact": 18.4
                 },
                 {
                     "name": "Bulgaria",
-                    "firstCharact": 21.3,
-                    "secondCharact": 0.7,
+                    "firstCharact": 121.3,
+                    "secondCharact": 90.7,
                     "thirdCharact": 10.3
                 }
             ]
@@ -747,8 +747,8 @@
             "countries": [
                 {
                     "name": "Romania",
-                    "firstCharact": 24.7,
-                    "secondCharact": 1.69,
+                    "firstCharact": 247.7,
+                    "secondCharact": 100.69,
                     "thirdCharact": 12.6
                 },
                 {
@@ -759,8 +759,8 @@
                 },
                 {
                     "name": "Bulgaria",
-                    "firstCharact": 21.4,
-                    "secondCharact": 0.452,
+                    "firstCharact": 210.4,
+                    "secondCharact": 340.452,
                     "thirdCharact": 11.3
                 }
             ]
@@ -770,14 +770,14 @@
             "countries": [
                 {
                     "name": "Romania",
-                    "firstCharact": 25.2,
-                    "secondCharact": 2.59,
+                    "firstCharact": 299.2,
+                    "secondCharact": 200.59,
                     "thirdCharact": 13.1
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 40,
-                    "secondCharact": 1.88,
+                    "firstCharact": 10,
+                    "secondCharact": 320.88,
                     "thirdCharact": 18.4
                 },
                 {
@@ -794,20 +794,20 @@
                 {
                     "name": "Romania",
                     "firstCharact": 24,
-                    "secondCharact": 2.05,
-                    "thirdCharact": 14.7
+                    "secondCharact": 200.05,
+                    "thirdCharact": 40.7
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 65,
-                    "secondCharact": 0.959,
+                    "firstCharact": 165,
+                    "secondCharact": 321.959,
                     "thirdCharact": 18.4
                 },
                 {
                     "name": "Bulgaria",
-                    "firstCharact": 19.1,
-                    "secondCharact": 2.25,
-                    "thirdCharact": 12.5
+                    "firstCharact": 89.1,
+                    "secondCharact": 156.25,
+                    "thirdCharact": 90.5
                 }
             ]
         },
