@@ -11,13 +11,13 @@
             "countries": [
                 {
                     "name": "Romania",
-                    "firstCharact": 19.8,
+                    "firstCharact": 41.5,
                     "secondCharact": 43.1,
-                    "thirdCharact": 2
+                    "thirdCharact": 20.3
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 10,
+                    "firstCharact": 32.9,
                     "secondCharact": 12,
                     "thirdCharact": 10
                 },
@@ -25,7 +25,7 @@
                     "name": "Bulgaria",
                     "firstCharact": 34.1,
                     "secondCharact": 1.92,
-                    "thirdCharact": 8.7
+                    "thirdCharact": 20.4
                 }
             ]
         },
@@ -34,19 +34,19 @@
             "countries": [
                 {
                     "name": "Romania",
-                    "firstCharact": 22.6,
-                    "secondCharact": 43.1,
-                    "thirdCharact": 2.3
+                    "firstCharact": 82.6,
+                    "secondCharact": 94.1,
+                    "thirdCharact": 24.3
                 },
                 {
                     "name": "Ungaria",
-                    "firstCharact": 20,
-                    "secondCharact": 8.9,
-                    "thirdCharact": 6.8
+                    "firstCharact": 56.5,
+                    "secondCharact": 14.6,
+                    "thirdCharact": 7.6
                 },
                 {
                     "name": "Bulgaria",
-                    "firstCharact": 32.9,
+                    "firstCharact": 40.9,
                     "secondCharact": 0.64,
                     "thirdCharact": 6.6
                 }
@@ -57,7 +57,7 @@
             "countries": [
                 {
                     "name": "Romania",
-                    "firstCharact": 22.5,
+                    "firstCharact": 90.5,
                     "secondCharact": 22.6,
                     "thirdCharact": 4
                 },
@@ -69,9 +69,9 @@
                 },
                 {
                     "name": "Bulgaria",
-                    "firstCharact": 33.2,
-                    "secondCharact": 2.7,
-                    "thirdCharact": 2.8
+                    "firstCharact": 133.2,
+                    "secondCharact": 112.7,
+                    "thirdCharact": 40
                 }
             ]
         },
