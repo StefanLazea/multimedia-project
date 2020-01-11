@@ -417,7 +417,6 @@ function draw(charactSelectValue, countrySelectValue) {
 // clears canvas
 // todo: remove selects and buttons in the interface
 function clearCanvas() {
-    // console.log(isChartAction)
     if (isChartAction === true) {
         table.style.marginTop = "5%";
         table.style.display = "none";
@@ -448,7 +447,6 @@ function drawHistogramContent(data) {
     const number = data.length;
     const widthMedia = canvasW / number;
     const heightUnit = canvasH / Math.max(...data);
-    console.log(getYearsFromJson()[0])
     for (let step = 0; step < number; step++) {
         let heightPerData = data[step] * heightUnit;
         context.rect(widthMedia * step, canvasH - heightPerData, widthMedia, heightPerData);
