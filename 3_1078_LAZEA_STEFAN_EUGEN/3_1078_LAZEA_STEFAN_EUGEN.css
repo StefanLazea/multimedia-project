@@ -1,0 +1,70 @@
+#grid {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#lateral-bar {
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 50%;
+}
+    
+#main {
+    float: right;
+    width: 80%;
+}
+
+#graficParagraf {
+    bottom: 50px !important;
+    margin-left: -100px !important;
+}
+
+#displayYear {
+    position: absolute;
+    left: 50%;
+    margin-left: -25px;
+}
+
+.center {
+    display: block;
+    margin: 10px auto;
+}
+
+.center-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.hide {
+    display: none;
+}
+
+.center-table {
+    position: absolute;
+    left: 50%;
+    margin-left: -150px;
+}
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 5%;
+}
+
+th {
+    background-color: #17678a;
+    color: white;
+}
+
+th, td {
+    padding: 8px;
+}
+
+canvas {
+    display: none;
+    background-color: #d4d6d5;
+}
